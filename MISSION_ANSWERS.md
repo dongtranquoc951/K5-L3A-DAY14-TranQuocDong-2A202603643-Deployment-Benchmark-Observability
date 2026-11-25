@@ -573,11 +573,11 @@ Total messages: 10
 - [06-lab-complete/app/rate_limiter.py](06-lab-complete/app/rate_limiter.py): sliding window 60s bằng Redis Sorted Set (`ZREMRANGEBYSCORE`, `ZCARD`, `ZADD`, `EXPIRE`), vượt ngưỡng trả **`429`** kèm header `Retry-After`.
 - [06-lab-complete/app/cost_guard.py](06-lab-complete/app/cost_guard.py): theo dõi chi phí ngày/tháng trong Redis (`INCRBYFLOAT`, `EXPIRE`), vượt `DAILY_BUDGET_USD` hoặc `MONTHLY_BUDGET_USD` trả **`402`**.
 - [06-lab-complete/app/main.py](06-lab-complete/app/main.py): `JsonFormatter` xuất 1 JSON object/dòng log, `lifespan` + `track_and_log_requests` hỗ trợ graceful shutdown, `/health` luôn trả `200`, `/ready` trả `200`/`503` theo Redis, `/ask` nối `verify_api_key` → `check_rate_limit` → `check_budget` → `llm_ask` → `record_cost`, global exception handler tránh lộ stack trace.
-- [06-lab-complete/Dockerfile](06-lab-complete/Dockerfile), [06-lab-complete/.dockerignore](06-lab-complete/.dockerignore), [06-lab-complete/docker-compose.yml](06-lab-complete/docker-compose.yml), [06-lab-complete/.env.example](06-lab-complete/.env.example), [06-lab-complete/railway.toml](06-lab-complete/railway.toml), [06-lab-complete/render.yaml](06-lab-complete/render.yaml): multi-stage `python:3.11-slim`, user non-root `appuser`, `HEALTHCHECK`, `CMD` dùng `exec uvicorn ... --port ${PORT:-8000} --workers 2`, build **21s**, image đo được **297 MB** (< 500 MB), `docker stop` thoát `exit code 0` trong **1.0s**.
+- [06-lab-complete/Dockerfile](06-lab-complete/Dockerfile), [06-lab-complete/.dockerignore](06-lab-complete/.dockerignore), [06-lab-complete/docker-compose.yml](06-lab-complete/docker-compose.yml), [06-lab-complete/.env.example](06-lab-complete/.env.example), [06-lab-complete/railway.toml](06-lab-complete/railway.toml), [06-lab-complete/render.yaml](06-lab-complete/render.yaml): multi-stage `python:3.11-slim`, user non-root `appuser`, `HEALTHCHECK`, `CMD` dùng `exec uvicorn ... --port ${PORT:-8000} --workers 2`, build **11s** (khi có `--public-url`), image đo được **297 MB** (< 500 MB), `docker stop` thoát `exit code 0` trong **1.1s**.
 
 ### Kết quả `check_production_ready.py` đã chạy
 
-Chạy `../.venv-wsl/bin/python check_production_ready.py` trong Ubuntu WSL2 (`os.name == 'posix'`, kết nối Docker Engine `29.9.3` qua Docker Desktop WSL Integration) đạt **`12/12` tiêu chí · `43/43` checks passed** (tất cả sub-checks pass: build image `21s`, image `297 MB`, rate limit `429` sau `5` request khi `RATE_LIMIT_PER_MINUTE=5`, cost guard `402` ở request thứ `1`, `12` dòng JSON log hợp lệ, `SIGTERM` mid-request trả `200` + thoát `exit code 0`, `docker stop` thoát `exit code 0` trong `1.0s`):
+Chạy `../.venv-wsl/bin/python check_production_ready.py --public-url https://k5-l3a-day14-tranquocdong-2a202603643-deployment-production.up.railway.app` trong Ubuntu WSL2 (`os.name == 'posix'`, kết nối Docker Engine `29.9.3` qua Docker Desktop WSL Integration) đạt **`12/12` tiêu chí · `44/44` checks passed** (tất cả sub-checks pass: build image `11s`, image `297 MB`, rate limit `429` sau `5` request khi `RATE_LIMIT_PER_MINUTE=5`, cost guard `402` ở request thứ `1`, `12` dòng JSON log hợp lệ, `SIGTERM` mid-request trả `200` + thoát `exit code 0`, `docker stop` thoát `exit code 0` trong `1.1s`, `GET <Public URL>/health → 200`):
 
 ```text
 ================================================================
@@ -595,7 +595,7 @@ Chạy `../.venv-wsl/bin/python check_production_ready.py` trong Ubuntu WSL2 (`o
      ✅ Graceful shutdown
      ✅ Public URL ready (Railway / Render config)
 ----------------------------------------------------------------
-  Result: 12/12 tiêu chí đạt · 43/43 checks passed
+  Result: 12/12 tiêu chí đạt · 44/44 checks passed
   🎉 PASS 12/12 — PRODUCTION READY! Deploy nào!
 ================================================================
 ```
@@ -604,8 +604,14 @@ Chạy `../.venv-wsl/bin/python check_production_ready.py` trong Ubuntu WSL2 (`o
 
 ### Exercise 3.1 / 3.2: Deploy agent `06-lab-complete/`
 
-- **Nền tảng chính:** *(Chưa deploy — chờ push repo lên GitHub và triển khai `06-lab-complete/` lên Railway hoặc Render kèm Redis và các biến `REDIS_URL`, `AGENT_API_KEY`, `PORT`, `ENVIRONMENT`.)*
-- **Public URL:** *(Điền sau khi deploy và chạy 4 lệnh kiểm tra `GET /health`, `GET /ready`, `POST /ask` không key → 401, `POST /ask` đúng key → 200.)*
+- **Nền tảng chính:** **Railway** (deploy thư mục `06-lab-complete/` theo [06-lab-complete/railway.toml](06-lab-complete/railway.toml), gắn service **Redis** và cấu hình biến môi trường `ENVIRONMENT`, `REDIS_URL`, `AGENT_API_KEY`, `RATE_LIMIT_PER_MINUTE`, `DAILY_BUDGET_USD`, `MONTHLY_BUDGET_USD`, `LOG_LEVEL` trên Railway Dashboard).
+- **Public URL:** `https://k5-l3a-day14-tranquocdong-2a202603643-deployment-production.up.railway.app`
+- **Kiểm chứng 4 lệnh CP6 (và `check_production_ready.py --public-url`):**
+  - `GET /health` → **`200`** (`{"status":"ok","environment":"production",...}`)
+  - `GET /ready` → **`200`** (`{"ready":true,"redis":"connected",...}`)
+  - `POST /ask` không có `X-API-Key` → **`401`** (`{"detail":"Invalid or missing API key. Include header: X-API-Key: <your-key>"}`)
+  - `POST /ask` có `X-API-Key` hợp lệ → **`200`** (`{"question":"Hello","answer":"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.","user_id":"test","cost_usd":1.59e-05}`)
+  - `python check_production_ready.py --public-url https://k5-l3a-day14-tranquocdong-2a202603643-deployment-production.up.railway.app` → **`PASS 12/12 · 44/44 checks passed`**.
 
 ### So sánh `railway.toml` với `render.yaml`
 
@@ -688,4 +694,12 @@ Tham chiếu [03-cloud-deployment/production-cloud-run/cloudbuild.yaml](03-cloud
 - **Hỗ trợ nhận được:** Antigravity chạy `promtool test rules` (`SUCCESS`), phát hiện và sửa lỗi thiếu `ENV PYTHONUSERBASE=/home/agent/.local` trong `06-lab-complete/benchmark-observability/production/Dockerfile` (khiến `uvicorn` crash `ModuleNotFoundError`), khởi động stack `k5-day14-observability`, chạy Locust headless `--no-deps` với 1 instance (`scale_1`) và 3 instance (`scale_3`) để giữ đúng số replica trong benchmark, trích xuất metrics Prometheus + 1 trace chậm + 1 trace lỗi trong Jaeger v3 API + log JSON theo `trace_id`, chạy thí nghiệm phá hệ thống A, B, D, E, copy CSV sang `benchmark-results/` và điền đầy đủ Mục 4–6 trong `BENCHMARK_REPORT.md`.
 - **Thay đổi:** Thêm `ENV PYTHONUSERBASE=/home/agent/.local` vào `06-lab-complete/benchmark-observability/production/Dockerfile`, tạo `.env` tạm trong `production/` (được `.gitignore` bỏ qua, đã khôi phục cấu hình mặc định `v2`), lưu CSV trong `production/benchmark-results/` và `benchmark-results/`, lưu bằng chứng `reports/cp8_traces_and_metrics.json`, `reports/cp8_chaos_results.json` và hoàn thiện `BENCHMARK_REPORT.md`.
 - **Kiểm chứng đã chạy:** `promtool test rules` đạt `SUCCESS`; `GET :8080/metrics` trả `404`; `scale_1` đạt `48.78 RPS / p95 2700ms` (5730 reqs), `scale_3` đạt `60.91 RPS / p95 1300ms` (7231 reqs); 3 alert (`AgentHighErrorRate` 96.9s, `AgentHighLatencyP95` 162.1s, `AgentInstanceDown` 41.1s) cùng `firing` đồng thời; thí nghiệm E (`v1`) không làm alert nào firing; xác định slow trace `b7a89db16d17c20d6fffd27b287dba8f` (`chat mock-llm-small` `1699.52 ms` / `98.6%`) và error trace `6cbad66fbe9f0ab08944b146f6637786` khớp dòng log JSON.
-- **Phần học viên tự sửa/tự kiểm tra:** Học viên đã tự chụp và kiểm tra đủ 4 ảnh CP8 (`grafana-dashboard.png`, `jaeger-slow-trace.png`, `jaeger-error-trace.png`, `prometheus-alert-firing.png` thấy `FIRING (2)` + `PENDING (1)`), đã lưu vào `screenshots/` và dọn stack `k5-day14-observability` (`down -v`). Việc kiểm chứng WSL2 (`PASS 12/12`) đã xong; chỉ còn bước deploy CP6 lên cloud (Railway/Render) + 3 ảnh deploy + điền public URL vào `DEPLOYMENT.md` và `MISSION_ANSWERS.md` Part 3.
+- **Phần học viên tự sửa/tự kiểm tra:** Học viên đã tự chụp và kiểm tra đủ 4 ảnh CP8 (`grafana-dashboard.png`, `jaeger-slow-trace.png`, `jaeger-error-trace.png`, `prometheus-alert-firing.png` thấy `FIRING (2)` + `PENDING (1)`), đã lưu vào `screenshots/` và dọn stack `k5-day14-observability` (`down -v`).
+
+### 2026-11-25 — CP6 (Deploy Railway & kiểm chứng Public URL)
+
+- **Yêu cầu:** Kiểm tra deploy `06-lab-complete/` trên Railway, chạy 4 lệnh test CP6 + `check_production_ready.py --public-url`, và cập nhật `DEPLOYMENT.md` cùng `MISSION_ANSWERS.md`.
+- **Hỗ trợ nhận được:** Antigravity giải thích nguyên nhân `GET /` trả `404 {"detail":"Not Found"}` (`main.py` chỉ định nghĩa `/health`, `/ready`, `/ask`), gọi kiểm chứng 4 endpoint trên Public URL Railway (`https://k5-l3a-day14-tranquocdong-2a202603643-deployment-production.up.railway.app`), chạy lại `check_production_ready.py --public-url` trong WSL2, cập nhật `DEPLOYMENT.md` và `MISSION_ANSWERS.md` (không ghi giá trị `AGENT_API_KEY` vào repo).
+- **Thay đổi:** Cập nhật `DEPLOYMENT.md` và `MISSION_ANSWERS.md` (mục Part 6, Part 3 và AI log). Không commit `.env` hay secret.
+- **Kiểm chứng đã chạy:** `GET /health` → `200`, `GET /ready` → `200` (`redis: connected`), `POST /ask` không key → `401`, `POST /ask` có `X-API-Key` → `200` (`cost_usd: 1.59e-05`); `../.venv-wsl/bin/python check_production_ready.py --public-url https://k5-l3a-day14-tranquocdong-2a202603643-deployment-production.up.railway.app` đạt **`PASS 12/12` · `44/44 checks passed`**.
+- **Phần học viên tự sửa/tự kiểm tra:** Học viên tự cấu hình project Railway (`Root Directory = 06-lab-complete`), thêm service Redis, đặt biến môi trường (`ENVIRONMENT`, `REDIS_URL`, `AGENT_API_KEY`, ...), bật Public Networking và gửi Public URL + key test. Còn bổ sung 3 ảnh deploy (`screenshots/dashboard.png`, `screenshots/running.png`, `screenshots/test.png`) trước khi commit/push bản nộp cuối.
