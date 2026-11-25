@@ -1,0 +1,7 @@
+# CP2 local run: Windows blocks binding host port 80 on this machine.
+# !override replaces the base file's port list (Docker Compose 2.24.4+).
+# Run together with docker-compose.yml using project k5-day14-docker.
+services:
+  nginx:
+    ports: !override
+      - "127.0.0.1:18080:80"

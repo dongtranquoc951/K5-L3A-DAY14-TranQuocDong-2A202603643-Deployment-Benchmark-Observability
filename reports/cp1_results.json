@@ -1,0 +1,163 @@
+{
+  "checkpoint": "CP1",
+  "ran_at": "2026-11-25T15:06:08.300447+07:00",
+  "environment": {
+    "os_name": "posix",
+    "python": "3.14.4",
+    "fastapi": "0.115.0",
+    "uvicorn": "0.30.0",
+    "python_dotenv": "1.2.4"
+  },
+  "runs": [
+    {
+      "variant": "develop",
+      "cwd": "01-localhost-vs-production/develop",
+      "command": "python -m uvicorn app:app --host 127.0.0.1 --port 18001",
+      "port": 18001,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "message": "Hello! Agent is running on my machine :)"
+          }
+        },
+        {
+          "method": "POST",
+          "path": "/ask?question=Hello",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé."
+          }
+        },
+        {
+          "method": "POST",
+          "path": "/ask",
+          "status": 422,
+          "content_type": "application/json",
+          "body": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "question"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "status": 404,
+          "content_type": "application/json",
+          "body": {
+            "detail": "Not Found"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/ready",
+          "status": 404,
+          "content_type": "application/json",
+          "body": {
+            "detail": "Not Found"
+          }
+        }
+      ],
+      "exit_code_after_sigterm": -15,
+      "logging": {
+        "json_like_lines": 0,
+        "invalid_json_lines": 0,
+        "invalid_example": null,
+        "shutdown_complete_seen": true
+      },
+      "expected_statuses_match": true
+    },
+    {
+      "variant": "production",
+      "cwd": "01-localhost-vs-production/production",
+      "command": "HOST=127.0.0.1 PORT=18002 ENVIRONMENT=staging DEBUG=false python app.py",
+      "port": 18002,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "app": "AI Agent",
+            "version": "1.0.0",
+            "environment": "staging",
+            "status": "running"
+          }
+        },
+        {
+          "method": "POST",
+          "path": "/ask",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "question": "Hello",
+            "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+            "model": "gpt-4o-mini"
+          }
+        },
+        {
+          "method": "POST",
+          "path": "/ask",
+          "status": 422,
+          "content_type": "application/json",
+          "body": {
+            "detail": "question field is required"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "status": "ok",
+            "uptime_seconds": 1.4,
+            "version": "1.0.0",
+            "environment": "staging",
+            "timestamp": "2026-11-25T08:06:18.101934+00:00"
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/ready",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "ready": true
+          }
+        }
+      ],
+      "exit_code_after_sigterm": 0,
+      "logging": {
+        "json_like_lines": 0,
+        "invalid_json_lines": 0,
+        "invalid_example": null,
+        "shutdown_complete_seen": true
+      },
+      "expected_statuses_match": true
+    }
+  ],
+  "production_logging_probe": {
+    "effective_level": "WARNING",
+    "info_enabled": false,
+    "root_formatters": [
+      "%(levelname)s:%(name)s:%(message)s"
+    ],
+    "declared_formatter_with_json_message_is_valid_json": false,
+    "declared_formatter_example": "{\"time\":\"2026-11-25 08:06:53,497\",\"level\":\"INFO\",\"msg\":\"{\"event\": \"startup\"}\"}"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "checkpoint": "CP4-production",
+  "ran_at": "2026-11-25T15:39:51.797222+07:00",
+  "ensure_up": {
+    "cmd": "docker compose -p k5-day14-scaling -f C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\05-scaling-reliability\\production\\docker-compose.yml up -d --scale agent=3 --wait --wait-timeout 60",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "time=\"2026-11-25T15:39:51+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\05-scaling-reliability\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\"\n Container k5-day14-scaling-agent-2 Running \n Container k5-day14-scaling-agent-3 Running \n Container k5-day14-scaling-nginx-1 Recreate \n Container k5-day14-scaling-redis-1 Recreate \n Container k5-day14-scaling-redis-1 Recreated \n Container k5-day14-scaling-nginx-1 Recreated \n Container k5-day14-scaling-redis-1 Starting \n Container k5-day14-scaling-redis-1 Started \n Container k5-day14-scaling-redis-1 Waiting \n Container k5-day14-scaling-redis-1 Healthy \n Container k5-day14-scaling-agent-1 Starting \n Container k5-day14-scaling-agent-1 Started \n Container k5-day14-scaling-nginx-1 Starting \n Container k5-day14-scaling-nginx-1 Started \n Container k5-day14-scaling-redis-1 Waiting \n Container k5-day14-scaling-nginx-1 Waiting \n Container k5-day14-scaling-agent-3 Waiting \n Container k5-day14-scaling-agent-2 Waiting \n Container k5-day14-scaling-agent-1 Waiting \n Container k5-day14-scaling-redis-1 Healthy \n Container k5-day14-scaling-nginx-1 Healthy \n Container k5-day14-scaling-agent-3 Healthy \n Container k5-day14-scaling-agent-2 Healthy \n Container k5-day14-scaling-agent-1 Healthy \n"
+  },
+  "compose_ps": {
+    "cmd": "docker compose -p k5-day14-scaling -f C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\05-scaling-reliability\\production\\docker-compose.yml ps",
+    "returncode": 0,
+    "stdout": "NAME                       IMAGE                    COMMAND                  SERVICE   CREATED          STATUS                    PORTS\nk5-day14-scaling-agent-1   k5-day14-scaling-agent   \"python -m uvicorn a…\"   agent     2 minutes ago    Up 6 seconds (healthy)    8000/tcp\nk5-day14-scaling-agent-2   k5-day14-scaling-agent   \"python -m uvicorn a…\"   agent     2 minutes ago    Up 2 minutes (healthy)    8000/tcp\nk5-day14-scaling-agent-3   k5-day14-scaling-agent   \"python -m uvicorn a…\"   agent     2 minutes ago    Up 2 minutes (healthy)    8000/tcp\nk5-day14-scaling-nginx-1   nginx:alpine             \"/docker-entrypoint.…\"   nginx     20 seconds ago   Up 6 seconds              0.0.0.0:8080->80/tcp, [::]:8080->80/tcp\nk5-day14-scaling-redis-1   redis:7-alpine           \"docker-entrypoint.s…\"   redis     20 seconds ago   Up 17 seconds (healthy)   6379/tcp\n",
+    "stderr": "time=\"2026-11-25T15:40:12+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\05-scaling-reliability\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\"\n"
+  },
+  "health_probe": {
+    "status": 200,
+    "headers": {
+      "Server": "nginx/1.31.10",
+      "Date": "Wed, 25 Nov 2026 08:40:12 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "111",
+      "Connection": "close",
+      "X-Served-By": "172.18.0.5:8000"
+    },
+    "body": {
+      "status": "ok",
+      "instance_id": "instance-6c4951",
+      "uptime_seconds": 157.7,
+      "storage": "redis",
+      "redis_connected": true
+    }
+  },
+  "ready_probe": {
+    "status": 200,
+    "headers": {
+      "Server": "nginx/1.31.10",
+      "Date": "Wed, 25 Nov 2026 08:40:12 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "43",
+      "Connection": "close",
+      "X-Served-By": "172.18.0.3:8000"
+    },
+    "body": {
+      "ready": true,
+      "instance": "instance-f18a1c"
+    }
+  },
+  "test_stateless": {
+    "cmd": "wsl .venv-wsl/bin/python 05-scaling-reliability/production/test_stateless.py",
+    "returncode": 0,
+    "stdout": "============================================================\nStateless Scaling Demo\n============================================================\n\nSession ID: 31469528-cc73-4ff0-aa97-ecb05c95e9d4\n\nRequest 1: [instance-8003fe]\n  Q: What is Docker?\n  A: Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!...\n\nRequest 2: [instance-6c4951]\n  Q: Why do we need containers?\n  A: Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé....\n\nRequest 3: [instance-f18a1c]\n  Q: What is Kubernetes?\n  A: Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận....\n\nRequest 4: [instance-8003fe]\n  Q: How does load balancing work?\n  A: Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận....\n\nRequest 5: [instance-6c4951]\n  Q: What is Redis used for?\n  A: Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ O...\n\n------------------------------------------------------------\nTotal requests: 5\nInstances used: {'instance-f18a1c', 'instance-8003fe', 'instance-6c4951'}\n✅ All requests served despite different instances!\n\n--- Conversation History ---\nTotal messages: 10\n  [user]: What is Docker?...\n  [assistant]: Container là cách đóng gói app để chạy ở mọi nơi. Build once...\n  [user]: Why do we need containers?...\n  [assistant]: Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đ...\n  [user]: What is Kubernetes?...\n  [assistant]: Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã đư...\n  [user]: How does load balancing work?...\n  [assistant]: Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã đư...\n  [user]: What is Redis used for?...\n  [assistant]: Đây là câu trả lời từ AI agent (mock). Trong production, đây...\n\n✅ Session history preserved across all instances via Redis!\n",
+    "stderr": "wsl: Failed to translate 'D:\\Program Files\\Git\\cmd'\nwsl: Failed to translate 'D:\\Program Files\\Node\\'\n"
+  },
+  "multi_instance_probe": {
+    "session_id": "8f389655-304e-4fcb-938f-9edc1e89162f",
+    "turns": [
+      {
+        "turn": 1,
+        "status": 200,
+        "x_served_by": "172.18.0.4:8000",
+        "served_by": "instance-8003fe",
+        "storage": "redis"
+      },
+      {
+        "turn": 2,
+        "status": 200,
+        "x_served_by": "172.18.0.5:8000",
+        "served_by": "instance-6c4951",
+        "storage": "redis"
+      },
+      {
+        "turn": 3,
+        "status": 200,
+        "x_served_by": "172.18.0.3:8000",
+        "served_by": "instance-f18a1c",
+        "storage": "redis"
+      },
+      {
+        "turn": 4,
+        "status": 200,
+        "x_served_by": "172.18.0.4:8000",
+        "served_by": "instance-8003fe",
+        "storage": "redis"
+      },
+      {
+        "turn": 5,
+        "status": 200,
+        "x_served_by": "172.18.0.5:8000",
+        "served_by": "instance-6c4951",
+        "storage": "redis"
+      },
+      {
+        "turn": 6,
+        "status": 200,
+        "x_served_by": "172.18.0.3:8000",
+        "served_by": "instance-f18a1c",
+        "storage": "redis"
+      }
+    ],
+    "history_count": 12
+  },
+  "stopped_container": {
+    "cmd": "docker stop k5-day14-scaling-agent-1",
+    "returncode": 0,
+    "stdout": "k5-day14-scaling-agent-1\n",
+    "stderr": ""
+  },
+  "failover_probe": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "ok": true,
+        "elapsed": 0.13,
+        "served_by": "instance-6c4951",
+        "x_served_by": "172.18.0.5:8000"
+      },
+      {
+        "attempt": 2,
+        "ok": false,
+        "elapsed": 12.02,
+        "error": "TimeoutError('timed out')"
+      },
+      {
+        "attempt": 3,
+        "ok": true,
+        "elapsed": 0.12,
+        "served_by": "instance-8003fe",
+        "x_served_by": "172.18.0.4:8000"
+      }
+    ],
+    "history_count_after": 16
+  },
+  "agent_logs_tail": {
+    "cmd": "docker compose -p k5-day14-scaling -f C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\05-scaling-reliability\\production\\docker-compose.yml logs --tail=30 agent",
+    "returncode": 0,
+    "stdout": "agent-1  | INFO:     Application startup complete.\nagent-2  | ✅ Connected to Redis\nagent-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\nagent-1  | INFO:     127.0.0.1:48196 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:38204 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     Started server process [1]\nagent-1  | INFO:     172.18.0.6:36566 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:36566 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:36566 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     Shutting down\nagent-1  | INFO:     Waiting for application shutdown.\nagent-1  | INFO:app:Instance instance-7b1f7e shutting down\nagent-2  | INFO:     Waiting for application startup.\nagent-2  | INFO:app:Starting instance instance-8003fe\nagent-2  | INFO:app:Storage: Redis ✅\nagent-1  | INFO:     Application shutdown complete.\nagent-1  | INFO:     Finished server process [1]\nagent-2  | INFO:     Application startup complete.\nagent-1  | ✅ Connected to Redis\nagent-1  | INFO:     Started server process [1]\nagent-1  | INFO:     Waiting for application startup.\nagent-1  | INFO:app:Starting instance instance-f18a1c\nagent-2  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\nagent-2  | INFO:     127.0.0.1:48202 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:38212 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:41582 - \"POST /chat HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:41582 - \"POST /chat HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:41582 - \"POST /chat HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:40892 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:app:Storage: Redis ✅\nagent-1  | INFO:     Application startup complete.\nagent-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\nagent-1  | INFO:     127.0.0.1:55104 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:35124 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:35226 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:55592 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:55570 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:45314 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:47796 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:51980 - \"GET /ready HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:51980 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:51980 - \"GET /chat/31469528-cc73-4ff0-aa97-ecb05c95e9d4/history HTTP/1.1\" 200 OK\nagent-2  | INFO:     127.0.0.1:40584 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:42056 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:51980 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.6:51980 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     Shutting down\nagent-1  | INFO:     Waiting for application shutdown.\nagent-1  | INFO:app:Instance instance-f18a1c shutting down\nagent-1  | INFO:     Application shutdown complete.\nagent-2  | INFO:     172.18.0.6:42056 - \"POST /chat HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:42056 - \"POST /chat HTTP/1.1\" 200 OK\nagent-1  | INFO:     Finished server process [1]\nagent-2  | INFO:     127.0.0.1:55108 - \"GET /health HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:42056 - \"POST /chat HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:42056 - \"GET /chat/8f389655-304e-4fcb-938f-9edc1e89162f/history HTTP/1.1\" 200 OK\nagent-2  | INFO:     172.18.0.6:52864 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | ✅ Connected to Redis\nagent-3  | INFO:     Started server process [1]\nagent-3  | INFO:     Waiting for application startup.\nagent-3  | INFO:app:Starting instance instance-6c4951\nagent-3  | INFO:app:Storage: Redis ✅\nagent-3  | INFO:     Application startup complete.\nagent-3  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\nagent-3  | INFO:     127.0.0.1:48214 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:38228 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:51642 - \"GET /ready HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:51642 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:51642 - \"GET /chat/71f1281e-d3c0-4ba2-bade-e1cdd7eef44d/history HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:40902 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:35128 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:35238 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:55602 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:55576 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:45328 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:47804 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:40596 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     127.0.0.1:55116 - \"GET /health HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:46344 - \"POST /chat HTTP/1.1\" 200 OK\nagent-3  | INFO:     172.18.0.6:60120 - \"GET /chat/8f389655-304e-4fcb-938f-9edc1e89162f/history HTTP/1.1\" 200 OK\n",
+    "stderr": "time=\"2026-11-25T15:40:27+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\05-scaling-reliability\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\"\n"
+  },
+  "compose_down": {
+    "cmd": "docker compose -p k5-day14-scaling -f C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\05-scaling-reliability\\production\\docker-compose.yml down",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "time=\"2026-11-25T15:40:28+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\05-scaling-reliability\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\"\n Container k5-day14-scaling-nginx-1 Stopping \n Container k5-day14-scaling-nginx-1 Stopped \n Container k5-day14-scaling-nginx-1 Removing \n Container k5-day14-scaling-nginx-1 Removed \n Container k5-day14-scaling-agent-3 Stopping \n Container k5-day14-scaling-agent-1 Stopping \n Container k5-day14-scaling-agent-2 Stopping \n Container k5-day14-scaling-agent-1 Stopped \n Container k5-day14-scaling-agent-1 Removing \n Container k5-day14-scaling-agent-1 Removed \n Container k5-day14-scaling-agent-2 Stopped \n Container k5-day14-scaling-agent-2 Removing \n Container k5-day14-scaling-agent-2 Removed \n Container k5-day14-scaling-agent-3 Stopped \n Container k5-day14-scaling-agent-3 Removing \n Container k5-day14-scaling-agent-3 Removed \n Container k5-day14-scaling-redis-1 Stopping \n Container k5-day14-scaling-redis-1 Stopped \n Container k5-day14-scaling-redis-1 Removing \n Container k5-day14-scaling-redis-1 Removed \n Network k5-day14-scaling_agent_net Removing \n Network k5-day14-scaling_agent_net Removed \n"
+  }
+}

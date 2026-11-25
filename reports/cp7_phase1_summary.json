@@ -1,0 +1,135 @@
+{
+  "ask_sample": {
+    "answer": "Prometheus pull metrics bằng cách scrape endpoint /metrics theo chu kỳ. Counter chỉ tăng (đếm request), Gauge lên xuống (request đang xử lý), Histogram chia latency vào các bucket để tính percentile bằng histogram_quantile.",
+    "model": "mock-llm-small",
+    "agent_version": "v2",
+    "usage": {
+      "input_tokens": 91,
+      "output_tokens": 55,
+      "cost_usd": 4.665e-05
+    },
+    "llm_latency_ms": 162.3,
+    "request_id": "0e6a6e9b2ff7"
+  },
+  "metrics_sample": [
+    "python_gc_objects_collected_total{generation=\"0\"} 401.0",
+    "python_gc_objects_collected_total{generation=\"1\"} 39.0",
+    "python_gc_objects_collected_total{generation=\"2\"} 0.0",
+    "python_gc_objects_uncollectable_total{generation=\"0\"} 0.0",
+    "python_gc_objects_uncollectable_total{generation=\"1\"} 0.0",
+    "python_gc_objects_uncollectable_total{generation=\"2\"} 0.0",
+    "python_gc_collections_total{generation=\"0\"} 125.0",
+    "python_gc_collections_total{generation=\"1\"} 11.0",
+    "python_gc_collections_total{generation=\"2\"} 1.0",
+    "python_info{implementation=\"CPython\",major=\"3\",minor=\"12\",patchlevel=\"10\",version=\"3.12.10\"} 1.0",
+    "http_requests_total{method=\"GET\",route=\"/health\",status=\"200\"} 1.0",
+    "http_requests_total{method=\"POST\",route=\"/ask\",status=\"200\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.05\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.1\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.2\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.3\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.5\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.75\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"1.0\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"1.5\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"2.0\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"3.0\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"5.0\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"+Inf\",method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_count{method=\"GET\",route=\"/health\"} 1.0",
+    "http_request_duration_seconds_sum{method=\"GET\",route=\"/health\"} 0.003871799970511347",
+    "http_request_duration_seconds_bucket{le=\"0.05\",method=\"POST\",route=\"/ask\"} 0.0",
+    "http_request_duration_seconds_bucket{le=\"0.1\",method=\"POST\",route=\"/ask\"} 0.0",
+    "http_request_duration_seconds_bucket{le=\"0.2\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.3\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.5\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"0.75\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"1.0\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"1.5\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"2.0\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"3.0\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"5.0\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_bucket{le=\"+Inf\",method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_count{method=\"POST\",route=\"/ask\"} 1.0",
+    "http_request_duration_seconds_sum{method=\"POST\",route=\"/ask\"} 0.1817845000186935",
+    "agent_in_flight_requests 0.0",
+    "llm_requests_total{model=\"mock-llm-small\",status=\"ok\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"0.05\",model=\"mock-llm-small\"} 0.0",
+    "llm_request_duration_seconds_bucket{le=\"0.1\",model=\"mock-llm-small\"} 0.0",
+    "llm_request_duration_seconds_bucket{le=\"0.2\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"0.3\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"0.5\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"0.75\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"1.0\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"1.5\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"2.0\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"3.0\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"5.0\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_bucket{le=\"+Inf\",model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_count{model=\"mock-llm-small\"} 1.0",
+    "llm_request_duration_seconds_sum{model=\"mock-llm-small\"} 0.16233599991652278",
+    "llm_tokens_total{model=\"mock-llm-small\",type=\"input\"} 91.0",
+    "llm_tokens_total{model=\"mock-llm-small\",type=\"output\"} 55.0",
+    "llm_cost_usd_total{model=\"mock-llm-small\"} 4.6649999999999996e-05",
+    "agent_info{model=\"mock-llm-small\",version=\"v2\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"20.0\"} 0.0",
+    "agent_question_length_chars_bucket{le=\"50.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"100.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"200.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"500.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"1000.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"2000.0\"} 1.0",
+    "agent_question_length_chars_bucket{le=\"+Inf\"} 1.0",
+    "agent_question_length_chars_count 1.0",
+    "agent_question_length_chars_sum 40.0"
+  ],
+  "concurrency_runs": {
+    "1": {
+      "rc": 1,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=1)\n  Duration     : 85.25 s\n  Throughput   : 3.52 req/s\n  Error rate   : 0.67%   {'200': 298, '503': 2}\n  Total cost   : $0.010319\n  Latency (ms) : min=150.8  avg=285.3  max=1731.5\n                 p50=202.0  p90=231.6  p95=1676.6  p99=1723.4\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ❌ FAIL\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_c1.json\n",
+      "stderr": ""
+    },
+    "10": {
+      "rc": 0,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=10)\n  Duration     : 8.48 s\n  Throughput   : 35.36 req/s\n  Error rate   : 1.67%   {'200': 295, '503': 5}\n  Total cost   : $0.010145\n  Latency (ms) : min=125.9  avg=249.5  max=1739.6\n                 p50=198.1  p90=229.3  p95=236.1  p99=1727.0\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ✅ PASS\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_c10.json\n",
+      "stderr": ""
+    },
+    "50": {
+      "rc": 0,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=50)\n  Duration     : 2.98 s\n  Throughput   : 100.75 req/s\n  Error rate   : 1.00%   {'200': 297, '503': 3}\n  Total cost   : $0.010118\n  Latency (ms) : min=140.9  avg=285.4  max=1781.8\n                 p50=210.4  p90=381.3  p95=419.6  p99=1732.9\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ✅ PASS\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_c50.json\n",
+      "stderr": ""
+    },
+    "100": {
+      "rc": 1,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=100)\n  Duration     : 4.54 s\n  Throughput   : 66.09 req/s\n  Error rate   : 0.67%   {'200': 298, '503': 2}\n  Total cost   : $0.010268\n  Latency (ms) : min=198.3  avg=1284.7  max=4497.6\n                 p50=713.3  p90=3311.8  p95=3755.0  p99=4102.1\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ❌ FAIL\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_c100.json\n",
+      "stderr": ""
+    }
+  },
+  "eval_v1": {
+    "rc": 1,
+    "stdout": "\n🧪 Eval agent tại http://127.0.0.1:8001\n\n  ✅ basic-01         score=1.00    199.2ms\n  ❌ docker-01        score=0.33    182.3ms\n  ❌ docker-02        score=0.00    186.7ms\n  ❌ probe-01         score=0.00    178.3ms\n  ❌ probe-02         score=0.00    171.2ms\n  ❌ reliability-01   score=0.00    172.4ms\n  ❌ config-01        score=0.00    182.8ms\n  ❌ security-01      score=0.00    185.7ms\n  ❌ security-02      score=0.00    154.4ms\n  ❌ scaling-01       score=0.00    166.8ms\n  ❌ scaling-02       score=0.00    167.9ms\n  ❌ scaling-03       score=0.00    155.2ms\n  ❌ bench-01         score=0.00   1680.8ms\n  ❌ bench-02         score=0.00    175.5ms\n  ❌ obs-01           score=0.00    168.2ms\n  ❌ obs-02           score=0.00    158.5ms\n  ❌ obs-03           score=0.00    184.1ms\n  ❌ obs-04           score=0.00    199.2ms\n  ❌ obs-05           score=0.00    183.2ms\n  ❌ obs-06           score=0.00    140.1ms\n  ❌ slo-01           score=0.00    171.0ms\n  ❌ cost-01          score=0.00    142.2ms\n  ❌ cloud-01         score=0.00    141.5ms\n\n══════════════════════════════════════════════════════════\n  EVAL REPORT — agent v1\n══════════════════════════════════════════════════════════\n  Accuracy      : 4.3%  (1/23)\n  Errors        : 0\n  Latency (ms)  : p50=172.4  p95=199.2\n  Avg tokens    : 57.7\n  Total cost    : $0.000413   (cost / câu đúng: $0.00041295)\n  Theo category :\n    - benchmark      0/3  (0%)\n    - cost           0/1  (0%)\n    - deployment     1/3  (33%)\n    - docker         0/2  (0%)\n    - observability  0/6  (0%)\n    - reliability    0/3  (0%)\n    - scaling        0/3  (0%)\n    - security       0/2  (0%)\n──────────────────────────────────────────────────────────\n  Quality gate (accuracy ≥ 80%, không regression): ❌ FAIL\n══════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/eval_v1.json\n",
+    "stderr": ""
+  },
+  "eval_v2": {
+    "rc": 0,
+    "stdout": "\n🧪 Eval agent tại http://127.0.0.1:8002\n\n  ✅ basic-01         score=1.00    223.7ms\n  ✅ docker-01        score=1.00    173.2ms\n  ✅ docker-02        score=1.00    202.6ms\n  ✅ probe-01         score=1.00    200.0ms\n  ✅ probe-02         score=1.00    202.2ms\n  ✅ reliability-01   score=1.00    217.6ms\n  ✅ config-01        score=1.00    198.9ms\n  ✅ security-01      score=1.00    186.8ms\n  ❌ security-02      score=0.00    197.5ms\n  ✅ scaling-01       score=1.00    230.2ms\n  ✅ scaling-02       score=1.00    203.0ms\n  ❌ scaling-03       score=0.00    185.7ms\n  ✅ bench-01         score=1.00    213.4ms\n  ✅ bench-02         score=1.00    199.7ms\n  ✅ obs-01           score=1.00    201.9ms\n  ✅ obs-02           score=1.00    214.3ms\n  ✅ obs-03           score=1.00    205.4ms\n  ✅ obs-04           score=1.00    236.9ms\n  ✅ obs-05           score=1.00    217.8ms\n  ✅ obs-06           score=1.00    171.1ms\n  ✅ slo-01           score=1.00    212.1ms\n  ✅ cost-01          score=1.00    202.8ms\n  ✅ cloud-01         score=1.00    205.2ms\n\n══════════════════════════════════════════════════════════\n  EVAL REPORT — agent v2\n══════════════════════════════════════════════════════════\n  Accuracy      : 91.3%  (21/23)\n  Errors        : 0\n  Latency (ms)  : p50=202.8  p95=229.5\n  Avg tokens    : 109.3\n  Total cost    : $0.000764   (cost / câu đúng: $0.00003639)\n  Theo category :\n    - benchmark      3/3  (100%)\n    - cost           1/1  (100%)\n    - deployment     3/3  (100%)\n    - docker         2/2  (100%)\n    - observability  6/6  (100%)\n    - reliability    3/3  (100%)\n    - scaling        2/3  (67%)\n    - security       1/2  (50%)\n\n  📊 So sánh với baseline (agent v1)\n  Chỉ số                    Baseline    Hiện tại        Thay đổi\n  Accuracy                      4.3%       91.3%    +87.0 điểm %\n  Latency p95 (ms)             199.2       229.5           +30.3\n  Avg tokens / câu              57.7       109.3           +51.6\n  Tổng cost (USD)           0.000413    0.000764       +0.000351\n\n  ✨ Câu được cải thiện : 20\n  ⚠️  Câu bị regression : 0 \n──────────────────────────────────────────────────────────\n  Quality gate (accuracy ≥ 80%, không regression): ✅ PASS\n══════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/eval_v2.json\n",
+    "stderr": ""
+  },
+  "slow_rate_runs": {
+    "0": {
+      "rc": 0,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=20)\n  Duration     : 2.98 s\n  Throughput   : 100.7 req/s\n  Error rate   : 1.00%   {'503': 3, '200': 297}\n  Total cost   : $0.009943\n  Latency (ms) : min=126.8  avg=193.1  max=273.9\n                 p50=187.6  p90=228.2  p95=230.6  p99=272.1\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ✅ PASS\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_slow_0.json\n",
+      "stderr": ""
+    },
+    "0.03": {
+      "rc": 0,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=20)\n  Duration     : 4.92 s\n  Throughput   : 61.0 req/s\n  Error rate   : 1.33%   {'200': 296, '503': 4}\n  Total cost   : $0.010066\n  Latency (ms) : min=122.8  avg=260.2  max=1726.9\n                 p50=194.9  p90=233.2  p95=253.4  p99=1711.7\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ✅ PASS\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_slow_0.03.json\n",
+      "stderr": ""
+    },
+    "0.1": {
+      "rc": 1,
+      "stdout": "\n════════════════════════════════════════════════════════\n  LOAD TEST REPORT — http://127.0.0.1:8002\n════════════════════════════════════════════════════════\n  Requests     : 300  (concurrency=20)\n  Duration     : 5.45 s\n  Throughput   : 55.07 req/s\n  Error rate   : 0.33%   {'200': 299, '503': 1}\n  Total cost   : $0.010403\n  Latency (ms) : min=123.0  avg=294.1  max=1740.0\n                 p50=194.0  p90=232.2  p95=1673.9  p99=1719.2\n────────────────────────────────────────────────────────\n  SLO p95 ≤ 500ms        : ❌ FAIL\n  SLO error rate ≤ 2.0%  : ✅ PASS\n════════════════════════════════════════════════════════\n\n💾 Đã lưu report: reports/load_v2_slow_0.1.json\n",
+      "stderr": ""
+    }
+  }
+}

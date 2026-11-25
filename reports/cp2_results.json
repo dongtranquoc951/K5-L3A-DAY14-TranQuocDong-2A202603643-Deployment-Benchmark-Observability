@@ -1,0 +1,818 @@
+{
+  "checkpoint": "CP2",
+  "ran_at": "2026-11-25T15:18:30.976391+07:00",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Client\":{\"Version\":\"29.9.3\",\"ApiVersion\":\"1.56\",\"DefaultAPIVersion\":\"1.56\",\"GitCommit\":\"5457199\",\"GoVersion\":\"go1.26.10\",\"Os\":\"windows\",\"Arch\":\"amd64\",\"BuildTime\":\"Tue Nov  3 21:46:10 2026\",\"Context\":\"desktop-linux\"},\"Server\":{\"Platform\":{\"Name\":\"Docker Desktop 4.99.0 (245822)\"},\"Version\":\"29.9.3\",\"ApiVersion\":\"1.56\",\"MinAPIVersion\":\"1.40\",\"Os\":\"linux\",\"Arch\":\"amd64\",\"Components\":[{\"Name\":\"Engine\",\"Version\":\"29.9.3\",\"Details\":{\"ApiVersion\":\"1.56\",\"Arch\":\"amd64\",\"BuildTime\":\"Tue Nov  3 21:41:42 2026\",\"Experimental\":\"false\",\"GitCommit\":\"70efc0e\",\"GoVersion\":\"go1.26.10\",\"KernelVersion\":\"6.18.58.1-microsoft-standard-WSL2\",\"MinAPIVersion\":\"1.40\",\"Module\":\"github.com/moby/moby/v2\",\"ModuleVersion\":\"v2.0.0+unknown\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"v2.4.2\",\"Details\":{\"GitCommit\":\"b7a25261e029d68978bbf290df0a62fc819b3c51\"}},{\"Name\":\"runc\",\"Version\":\"1.5.2\",\"Details\":{\"GitCommit\":\"v1.5.2-0-g29dd3dc2\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"de40ad0\"}}],\"GitCommit\":\"70efc0e\",\"GoVersion\":\"go1.26.10\",\"KernelVersion\":\"6.18.58.1-microsoft-standard-WSL2\",\"BuildTime\":\"2026-11-03T21:41:42.000000000+00:00\"}}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit_code": 0,
+      "stdout": "Docker Compose version v5.7.0",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "my-agent:develop",
+        "my-agent:advanced"
+      ],
+      "exit_code": 0,
+      "stdout": "[\n    {\n        \"Id\": \"sha256:8ae7d01834e281cc27d8bc7551c529752a25b79565868a3720e7791e3579d0a4\",\n        \"RepoTags\": [\n            \"my-agent:develop\"\n        ],\n        \"RepoDigests\": [\n            \"my-agent@sha256:8ae7d01834e281cc27d8bc7551c529752a25b79565868a3720e7791e3579d0a4\"\n        ],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-25T08:12:38.346087352Z\",\n        \"Config\": {\n            \"ExposedPorts\": {\n                \"8000/tcp\": {}\n            },\n            \"Env\": [\n                \"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"LANG=C.UTF-8\",\n                \"GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D\",\n                \"PYTHON_VERSION=3.11.18\",\n                \"PYTHON_SHA256=9120e0a653868f6e3698d36cdd99e5a58903ec9469e448f21d98f7b16d8fa290\"\n            ],\n            \"Cmd\": [\n                \"python\",\n                \"app.py\"\n            ],\n            \"WorkingDir\": \"/app\",\n            \"ArgsEscaped\": true\n        },\n        \"Architecture\": \"amd64\",\n        \"Os\": \"linux\",\n        \"Size\": 1667783905,\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:5a13ab4fd379b4a5b3e5e0b199e5ebc916896237a7b3775975b960743d34373d\",\n                \"sha256:659e96a3451280f2aaa6413e0719cbc261683886e44409b9c023244aa7785432\",\n                \"sha256:0cb57ba75d8944a94e4da61cfa72bef30f7f39526d228e0993ca575f9a4ac012\",\n                \"sha256:eb48e6d293c47c956dcefef857bd52fda8631857a9dc63073377662b485fbe2a\",\n                \"sha256:b353bd09746fed1172f58ac28102bff6243bd72b65fd5320cbb25ce86bfd5c56\",\n                \"sha256:efbeb2f184d57bf2e8e6a64d68eab3e85acd5d795aec25218456d31d8fae6f6b\",\n                \"sha256:b1083ed84ef09a97c394bbafc6644b9ee00efb4273395dc81d6ff5e23cd721dc\",\n                \"sha256:7c4157257119ac7074e92fda6cd44cbac57b4f75ad942c349698c122cd629450\",\n                \"sha256:caac86162ec5945599afcb5d8638ea0882f0ad75558967a62a331c6612cb3f71\",\n                \"sha256:4cb2c9017c8e0f942756b8dba63a7debe37072fbf35b36dad65e9ba1a5cd2329\",\n                \"sha256:000ab87cff28534c1ffebbaaf0ecfc2ccd911dc28a0f940f9b93057d9afd3e16\",\n                \"sha256:e229d1e28da22d09467a39171946bd8306b14a0f99fa39c7ed5132ff0a43bf2f\",\n                \"sha256:6e18017ded79af6730a525db2a19617ed21583433cf188640d28dd7522f6ae77\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-25T08:12:46.81023208Z\"\n        },\n        \"Descriptor\": {\n            \"mediaType\": \"application/vnd.oci.image.index.v1+json\",\n            \"digest\": \"sha256:8ae7d01834e281cc27d8bc7551c529752a25b79565868a3720e7791e3579d0a4\",\n            \"size\": 856\n        },\n        \"Identity\": {\n            \"Build\": [\n                {\n                    \"Ref\": \"efdh2ihw34qpscib90igz6c3m\",\n                    \"CreatedAt\": \"2026-11-25T08:14:13.606270161Z\"\n                }\n            ]\n        }\n    },\n    {\n        \"Id\": \"sha256:3babad1e3db107737193d4e36ebdd966d00c4b1566505173e788ad20520bff47\",\n        \"RepoTags\": [\n            \"k5-day14-docker-agent:latest\",\n            \"my-agent:advanced\"\n        ],\n        \"RepoDigests\": [\n            \"k5-day14-docker-agent@sha256:3babad1e3db107737193d4e36ebdd966d00c4b1566505173e788ad20520bff47\",\n            \"my-agent@sha256:3babad1e3db107737193d4e36ebdd966d00c4b1566505173e788ad20520bff47\"\n        ],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-25T08:12:42.429105964Z\",\n        \"Config\": {\n            \"User\": \"appuser\",\n            \"ExposedPorts\": {\n                \"8000/tcp\": {}\n            },\n            \"Env\": [\n                \"PATH=/home/appuser/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"LANG=C.UTF-8\",\n                \"GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D\",\n                \"PYTHON_VERSION=3.11.18\",\n                \"PYTHON_SHA256=9120e0a653868f6e3698d36cdd99e5a58903ec9469e448f21d98f7b16d8fa290\",\n                \"PYTHONPATH=/app\"\n            ],\n            \"Cmd\": [\n                \"uvicorn\",\n                \"main:app\",\n                \"--host\",\n                \"0.0.0.0\",\n                \"--port\",\n                \"8000\",\n                \"--workers\",\n                \"2\"\n            ],\n            \"WorkingDir\": \"/app\",\n            \"ArgsEscaped\": true,\n            \"Healthcheck\": {\n                \"Test\": [\n                    \"CMD-SHELL\",\n                    \"python -c \\\"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\\\" || exit 1\"\n                ],\n                \"Interval\": 30000000000,\n                \"Timeout\": 10000000000,\n                \"StartPeriod\": 5000000000,\n                \"Retries\": 3\n            }\n        },\n        \"Architecture\": \"amd64\",\n        \"Os\": \"linux\",\n        \"Size\": 239815442,\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:54ae9782e24f4abba5eebc5cc388f983b590abb011b69f20e0e592240bb7a698\",\n                \"sha256:87580868fddd35ea220200fd8291dc6fad807c2e7d6c40fa57a40b8baf227210\",\n                \"sha256:091c101662453e73d920ee66262c81c9d836f405b278a5d8d310490f89bd9244\",\n                \"sha256:7d3798b9daa6a3964ae34738ee9b899d0c086fcb4f6538efd2a874187ae33423\",\n                \"sha256:17a4ae6e3e6b3e0c5b60bdd259a08048a6f22d344c166ce50f73958699af9587\",\n                \"sha256:7a9dbcc4b4930fcc2415029504c4d273b18199d5125009616688461f12984e35\",\n                \"sha256:9fc527523b177b9dee088fc3c0f509a8697e9be0038d77f3669fae02cce36ca8\",\n                \"sha256:b7872ccee5a9a1d1be2cd3e255b83519f79f15c9e93684d6bb41b2700c0c36d4\",\n                \"sha256:bf24573f53e1a197baa46a6bc7b41f427a013c4b033ad5eb8fc7b56746f8fb94\",\n                \"sha256:f59a23de82d256b2831b1f842db7cb1a0bcf034965ff7ba051ef733e1a726304\",\n                \"sha256:38cc4236227fb3071f01778d532db7428662b9ba3579b296e6ddd41ce905df1a\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-25T08:14:21.326525438Z\"\n        },\n        \"Descriptor\": {\n            \"mediaType\": \"application/vnd.oci.image.index.v1+json\",\n            \"digest\": \"sha256:3babad1e3db107737193d4e36ebdd966d00c4b1566505173e788ad20520bff47\",\n            \"size\": 856\n        },\n        \"Identity\": {\n            \"Build\": [\n                {\n                    \"Ref\": \"4mowsi7ygxjljajis01oiaejp\",\n                    \"CreatedAt\": \"2026-11-25T08:12:59.049898301Z\"\n                }\n            ]\n        }\n    }\n]",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "images",
+        "my-agent",
+        "--format",
+        "{{json .}}"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Containers\":\"2\",\"CreatedAt\":\"2026-11-25 15:12:42 +0700 +07\",\"CreatedSince\":\"5 minutes ago\",\"Digest\":\"\\u003cnone\\u003e\",\"ID\":\"3babad1e3db1\",\"Repository\":\"my-agent\",\"SharedSize\":\"N/A\",\"Size\":\"240MB\",\"Tag\":\"advanced\",\"UniqueSize\":\"N/A\"}\n{\"Containers\":\"1\",\"CreatedAt\":\"2026-11-25 15:12:38 +0700 +07\",\"CreatedSince\":\"5 minutes ago\",\"Digest\":\"\\u003cnone\\u003e\",\"ID\":\"8ae7d01834e2\",\"Repository\":\"my-agent\",\"SharedSize\":\"N/A\",\"Size\":\"1.67GB\",\"Tag\":\"develop\",\"UniqueSize\":\"N/A\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "ps",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Command\":\"\\\"uvicorn main:app --…\\\"\",\"CreatedAt\":\"2026-11-25 15:14:25 +0700 +07\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"8fb3c6bb960c\",\"Image\":\"k5-day14-docker-agent\",\"Labels\":\"com.docker.compose.config-hash=d8a8836bbe819194d0f2db74af364ebcbd729879491dc38fdc4cf6e2af4f82d9,com.docker.compose.depends_on=qdrant:service_healthy:false,redis:service_healthy:false,com.docker.compose.image=sha256:2b30d677471aff4967d322809efb3ba03929db7dae5565364400b0a8cd10c524,com.docker.compose.oneoff=False,com.docker.compose.version=5.7.0,com.docker.compose.container-number=1,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.config_files=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production,com.docker.compose.service=agent,desktop.docker.io/ports.scheme=v2\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"k5-day14-docker-agent-1\",\"Names\":\"k5-day14-docker-agent-1\",\"Networks\":\"k5-day14-docker_internal\",\"Ports\":\"8000/tcp\",\"Project\":\"k5-day14-docker\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":8000,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"4 minutes ago\",\"Service\":\"agent\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes (healthy)\"}\n{\"Command\":\"\\\"/docker-entrypoint.…\\\"\",\"CreatedAt\":\"2026-11-25 15:15:16 +0700 +07\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"a4cef59385eb\",\"Image\":\"nginx:alpine\",\"Labels\":\"com.docker.compose.config-hash=b77dc62206a6b18038cb8325bd36c50314da9b8a53a0e6cc9e9353b1fd293c06,com.docker.compose.project=k5-day14-docker,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/SourceKind=hostFile,com.docker.compose.container-number=1,com.docker.compose.depends_on=agent:service_started:false,com.docker.compose.image=sha256:54845972134f849c623fe5cfbedee7e1d35a5708c84a4f36bf9471a9b7aa673d,com.docker.compose.project.working_dir=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production,com.docker.compose.replace=nginx-1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/binds/0/Source=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\nginx\\\\nginx.conf,desktop.docker.io/binds/0/Target=/etc/nginx/nginx.conf,desktop.docker.io/ports/80/tcp=127.0.0.1:18080,maintainer=NGINX Docker Maintainers \\u003cdocker-maint@nginx.com\\u003e,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml,C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.cp2.yml,com.docker.compose.service=nginx\",\"LocalVolumes\":\"0\",\"Mounts\":\"/run/desktop/m…\",\"Name\":\"k5-day14-docker-nginx-1\",\"Names\":\"k5-day14-docker-nginx-1\",\"Networks\":\"k5-day14-docker_internal\",\"Ports\":\"127.0.0.1:18080-\\u003e80/tcp\",\"Project\":\"k5-day14-docker\",\"Publishers\":[{\"URL\":\"127.0.0.1\",\"TargetPort\":80,\"PublishedPort\":18080,\"Protocol\":\"tcp\"}],\"RunningFor\":\"3 minutes ago\",\"Service\":\"nginx\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes\"}\n{\"Command\":\"\\\"./entrypoint.sh\\\"\",\"CreatedAt\":\"2026-11-25 15:14:22 +0700 +07\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"caa873bd8db7\",\"Image\":\"qdrant/qdrant:v1.9.0\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.image=sha256:463ecb43c9f946b0a4ae99b602d8abbda53c88003461ab5639aa50b63cef8769,com.docker.compose.service=qdrant,com.docker.compose.version=5.7.0,org.opencontainers.image.documentation=https://qdrant.com/docs,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.working_dir=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/qdrant/storage,desktop.docker.io/ports.scheme=v2,org.opencontainers.image.source=https://github.com/qdrant/qdrant,com.docker.compose.config-hash=4c5dffc3c733d73298a117b5290f4110ec8c7c94de0ef1aca2ff29bda1de3ee1,com.docker.compose.project.config_files=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml,desktop.docker.io/binds/0/Source=k5-day14-docker_qdrant_data,org.opencontainers.image.description=Official Qdrant image,org.opencontainers.image.title=Qdrant,org.opencontainers.image.url=https://qdrant.com/,org.opencontainers.image.vendor=Qdrant,org.opencontainers.image.version=v1.9.0\",\"LocalVolumes\":\"1\",\"Mounts\":\"k5-day14-docke…\",\"Name\":\"k5-day14-docker-qdrant-1\",\"Names\":\"k5-day14-docker-qdrant-1\",\"Networks\":\"k5-day14-docker_internal\",\"Ports\":\"6333-6334/tcp\",\"Project\":\"k5-day14-docker\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":6333,\"PublishedPort\":0,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":6334,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"4 minutes ago\",\"Service\":\"qdrant\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 4 minutes (healthy)\"}\n{\"Command\":\"\\\"docker-entrypoint.s…\\\"\",\"CreatedAt\":\"2026-11-25 15:14:22 +0700 +07\",\"Engine\":\"\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"c1bb77f14fad\",\"Image\":\"redis:7-alpine\",\"Labels\":\"com.docker.compose.container-number=1,com.docker.compose.image=sha256:e4ee3e03ce8f75471f40937a7c6b2b0e500390b6812fcdf5cb32c01295ded446,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.config_files=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml,com.docker.compose.service=redis,desktop.docker.io/binds/0/Target=/data,com.docker.compose.config-hash=1e79f700c96ff71fa8a43926ba9c395509cff351d1ae18a69d46eca80df803c2,com.docker.compose.depends_on=,com.docker.compose.project.working_dir=C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/Source=k5-day14-docker_redis_data,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/ports.scheme=v2\",\"LocalVolumes\":\"1\",\"Mounts\":\"k5-day14-docke…\",\"Name\":\"k5-day14-docker-redis-1\",\"Names\":\"k5-day14-docker-redis-1\",\"Networks\":\"k5-day14-docker_internal\",\"Ports\":\"6379/tcp\",\"Project\":\"k5-day14-docker\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":6379,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"4 minutes ago\",\"Service\":\"redis\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 4 minutes (healthy)\"}",
+      "stderr": "time=\"2026-11-25T15:18:33+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "exec",
+        "-T",
+        "redis",
+        "redis-cli",
+        "ping"
+      ],
+      "exit_code": 0,
+      "stdout": "PONG",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "k5-day14-cp2-advanced",
+        "python",
+        "-c",
+        "import os, sys, json, fastapi, uvicorn; print(json.dumps({\"uid\": os.getuid(), \"os_name\": os.name, \"python\": sys.version.split()[0], \"fastapi\": fastapi.__version__, \"uvicorn\": uvicorn.__version__}))"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"uid\": 999, \"os_name\": \"posix\", \"python\": \"3.11.18\", \"fastapi\": \"0.115.0\", \"uvicorn\": \"0.30.0\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "exec",
+        "k5-day14-cp2-develop",
+        "python",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.11.18",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "exec",
+        "-T",
+        "agent",
+        "python",
+        "-c",
+        "import socket; s=socket.create_connection((\"redis\",6379),timeout=5); s.sendall(bytes([42,49,13,10,36,52,13,10,80,73,78,71,13,10])); print(s.recv(128).decode().strip()); s.close()"
+      ],
+      "exit_code": 0,
+      "stdout": "+PONG",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "exec",
+        "-T",
+        "agent",
+        "python",
+        "-c",
+        "import urllib.request; print(urllib.request.urlopen(\"http://qdrant:6333/\", timeout=5).read().decode())"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"title\":\"qdrant - vector search engine\",\"version\":\"1.9.0\",\"commit\":\"b99d507496a40b0895fff76eb2fa7a5cfdb701a9\"}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "logs",
+        "--tail",
+        "30",
+        "k5-day14-cp2-develop"
+      ],
+      "exit_code": 0,
+      "stdout": "INFO:     172.17.0.1:36042 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     172.17.0.1:36054 - \"POST /ask?question=What%20is%20Docker%3F HTTP/1.1\" 200 OK\nINFO:     172.17.0.1:36068 - \"POST /ask HTTP/1.1\" 422 Unprocessable Entity",
+      "stderr": "INFO:     Started server process [1]\nINFO:     Waiting for application startup.\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "logs",
+        "--no-color",
+        "--tail",
+        "40",
+        "agent",
+        "nginx"
+      ],
+      "exit_code": 0,
+      "stdout": "agent-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)\nagent-1  | INFO:     Started parent process [1]\nagent-1  | INFO:     Started server process [8]\nagent-1  | INFO:     Waiting for application startup.\nagent-1  | {\"time\":\"2026-11-25 08:14:44,141\",\"level\":\"INFO\",\"msg\":\"Starting agent...\"}\nagent-1  | INFO:     Started server process [9]\nagent-1  | INFO:     Waiting for application startup.\nagent-1  | {\"time\":\"2026-11-25 08:14:44,221\",\"level\":\"INFO\",\"msg\":\"Starting agent...\"}\nnginx-1  | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration\nagent-1  | {\"time\":\"2026-11-25 08:14:44,241\",\"level\":\"INFO\",\"msg\":\"Agent ready\"}\nagent-1  | INFO:     Application startup complete.\nnginx-1  | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/\nnginx-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh\nnginx-1  | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf\nnginx-1  | 10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf\nagent-1  | {\"time\":\"2026-11-25 08:14:44,322\",\"level\":\"INFO\",\"msg\":\"Agent ready\"}\nagent-1  | INFO:     Application startup complete.\nnginx-1  | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh\nagent-1  | INFO:     127.0.0.1:56694 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:58968 - \"GET /health HTTP/1.1\" 200 OK\nnginx-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh\nnginx-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh\nnginx-1  | /docker-entrypoint.sh: Configuration complete; ready for start up\nnginx-1  | 172.18.0.1 - - [25/Nov/2026:08:18:32 +0000] \"GET /ready HTTP/1.1\" 200 14 \"-\" \"Python-urllib/3.12\"\nagent-1  | INFO:     127.0.0.1:54618 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:58360 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:38608 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:35144 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     127.0.0.1:53584 - \"GET /health HTTP/1.1\" 200 OK\nnginx-1  | 172.18.0.1 - - [25/Nov/2026:08:18:32 +0000] \"POST /ask HTTP/1.1\" 200 95 \"-\" \"Python-urllib/3.12\"\nagent-1  | INFO:     127.0.0.1:54756 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.5:45764 - \"GET /health HTTP/1.1\" 200 OK\nagent-1  | INFO:     172.18.0.5:45764 - \"GET /ready HTTP/1.1\" 200 OK\nagent-1  | {\"time\":\"2026-11-25 08:18:32,691\",\"level\":\"INFO\",\"msg\":\"{\"event\": \"request\", \"q_len\": 21}\"}\nagent-1  | INFO:     172.18.0.5:45764 - \"POST /ask HTTP/1.1\" 200 OK",
+      "stderr": "time=\"2026-11-25T15:18:38+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "-p",
+        "k5-day14-docker",
+        "-f",
+        "02-docker/production/docker-compose.yml",
+        "-f",
+        "02-docker/production/docker-compose.cp2.yml",
+        "config",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"name\": \"k5-day14-docker\",\n  \"networks\": {\n    \"internal\": {\n      \"name\": \"k5-day14-docker_internal\",\n      \"driver\": \"bridge\",\n      \"ipam\": {}\n    }\n  },\n  \"services\": {\n    \"agent\": {\n      \"restart\": \"unless-stopped\",\n      \"command\": null,\n      \"entrypoint\": null,\n      \"environment\": {\n        \"ENVIRONMENT\": \"staging\",\n        \"PORT\": \"8000\",\n        \"QDRANT_URL\": \"http://qdrant:6333\",\n        \"REDIS_URL\": \"redis://redis:6379/0\"\n      },\n      \"networks\": {\n        \"internal\": null\n      },\n      \"build\": {\n        \"context\": \"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\",\n        \"dockerfile\": \"02-docker/production/Dockerfile\",\n        \"target\": \"runtime\"\n      },\n      \"depends_on\": {\n        \"qdrant\": {\n          \"condition\": \"service_healthy\",\n          \"required\": true\n        },\n        \"redis\": {\n          \"condition\": \"service_healthy\",\n          \"required\": true\n        }\n      },\n      \"healthcheck\": {\n        \"test\": [\n          \"CMD\",\n          \"python\",\n          \"-c\",\n          \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\"\n        ],\n        \"timeout\": \"10s\",\n        \"interval\": \"30s\",\n        \"retries\": 3,\n        \"start_period\": \"10s\"\n      }\n    },\n    \"nginx\": {\n      \"restart\": \"unless-stopped\",\n      \"command\": null,\n      \"entrypoint\": null,\n      \"image\": \"nginx:alpine\",\n      \"networks\": {\n        \"internal\": null\n      },\n      \"volumes\": [\n        {\n          \"type\": \"bind\",\n          \"source\": \"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\nginx\\\\nginx.conf\",\n          \"target\": \"/etc/nginx/nginx.conf\",\n          \"read_only\": true,\n          \"bind\": {}\n        }\n      ],\n      \"depends_on\": {\n        \"agent\": {\n          \"condition\": \"service_started\",\n          \"required\": true\n        }\n      },\n      \"ports\": [\n        {\n          \"mode\": \"ingress\",\n          \"host_ip\": \"127.0.0.1\",\n          \"target\": 80,\n          \"published\": \"18080\",\n          \"protocol\": \"tcp\"\n        }\n      ]\n    },\n    \"qdrant\": {\n      \"command\": null,\n      \"entrypoint\": null,\n      \"image\": \"qdrant/qdrant:v1.9.0\",\n      \"networks\": {\n        \"internal\": null\n      },\n      \"volumes\": [\n        {\n          \"type\": \"volume\",\n          \"source\": \"qdrant_data\",\n          \"target\": \"/qdrant/storage\",\n          \"volume\": {}\n        }\n      ],\n      \"healthcheck\": {\n        \"test\": [\n          \"CMD-SHELL\",\n          \"bash -c 'echo \\u003e /dev/tcp/localhost/6333'\"\n        ],\n        \"timeout\": \"5s\",\n        \"interval\": \"15s\",\n        \"retries\": 3,\n        \"start_period\": \"10s\"\n      }\n    },\n    \"redis\": {\n      \"command\": [\n        \"redis-server\",\n        \"--maxmemory\",\n        \"256mb\",\n        \"--maxmemory-policy\",\n        \"allkeys-lru\"\n      ],\n      \"entrypoint\": null,\n      \"image\": \"redis:7-alpine\",\n      \"networks\": {\n        \"internal\": null\n      },\n      \"volumes\": [\n        {\n          \"type\": \"volume\",\n          \"source\": \"redis_data\",\n          \"target\": \"/data\",\n          \"volume\": {}\n        }\n      ],\n      \"healthcheck\": {\n        \"test\": [\n          \"CMD\",\n          \"redis-cli\",\n          \"ping\"\n        ],\n        \"timeout\": \"5s\",\n        \"interval\": \"10s\",\n        \"retries\": 3\n      }\n    }\n  },\n  \"volumes\": {\n    \"qdrant_data\": {\n      \"name\": \"k5-day14-docker_qdrant_data\"\n    },\n    \"redis_data\": {\n      \"name\": \"k5-day14-docker_redis_data\"\n    }\n  }\n}",
+      "stderr": "time=\"2026-11-25T15:18:38+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\""
+    }
+  ],
+  "requests": [
+    {
+      "target": "develop",
+      "method": "GET",
+      "url": "http://127.0.0.1:18010/health",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:31 GMT",
+        "server": "uvicorn",
+        "content-length": "55",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 190.9,
+        "container": true
+      }
+    },
+    {
+      "target": "develop",
+      "method": "POST",
+      "url": "http://127.0.0.1:18010/ask?question=What%20is%20Docker%3F",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:32 GMT",
+        "server": "uvicorn",
+        "content-length": "103",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "answer": "Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!"
+      }
+    },
+    {
+      "target": "develop-json-negative",
+      "method": "POST",
+      "url": "http://127.0.0.1:18010/ask",
+      "request_body": {
+        "question": "What is Docker?"
+      },
+      "status": 422,
+      "expected_status": 422,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:32 GMT",
+        "server": "uvicorn",
+        "content-length": "94",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "detail": [
+          {
+            "type": "missing",
+            "loc": [
+              "query",
+              "question"
+            ],
+            "msg": "Field required",
+            "input": null
+          }
+        ]
+      }
+    },
+    {
+      "target": "advanced",
+      "method": "GET",
+      "url": "http://127.0.0.1:18011/health",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:31 GMT",
+        "server": "uvicorn",
+        "content-length": "97",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 264.2,
+        "version": "2.0.0",
+        "timestamp": "2026-11-25T08:18:32.416686"
+      }
+    },
+    {
+      "target": "advanced",
+      "method": "GET",
+      "url": "http://127.0.0.1:18011/ready",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:31 GMT",
+        "server": "uvicorn",
+        "content-length": "14",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "ready": true
+      }
+    },
+    {
+      "target": "advanced",
+      "method": "POST",
+      "url": "http://127.0.0.1:18011/ask",
+      "request_body": {
+        "question": "What is Docker?"
+      },
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "date": "Wed, 25 Nov 2026 08:18:31 GMT",
+        "server": "uvicorn",
+        "content-length": "103",
+        "content-type": "application/json",
+        "connection": "close"
+      },
+      "body": {
+        "answer": "Container là cách đóng gói app để chạy ở mọi nơi. Build once, run anywhere!"
+      }
+    },
+    {
+      "target": "nginx",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/health",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "Server": "nginx",
+        "Date": "Wed, 25 Nov 2026 08:18:32 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "97",
+        "Connection": "close",
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "body": {
+        "status": "ok",
+        "uptime_seconds": 228.5,
+        "version": "2.0.0",
+        "timestamp": "2026-11-25T08:18:32.655722"
+      }
+    },
+    {
+      "target": "nginx",
+      "method": "GET",
+      "url": "http://127.0.0.1:18080/ready",
+      "request_body": null,
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "Server": "nginx",
+        "Date": "Wed, 25 Nov 2026 08:18:32 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "14",
+        "Connection": "close",
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "body": {
+        "ready": true
+      }
+    },
+    {
+      "target": "nginx",
+      "method": "POST",
+      "url": "http://127.0.0.1:18080/ask",
+      "request_body": {
+        "question": "Explain microservices"
+      },
+      "status": 200,
+      "expected_status": 200,
+      "headers": {
+        "Server": "nginx",
+        "Date": "Wed, 25 Nov 2026 08:18:32 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "95",
+        "Connection": "close",
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "body": {
+        "answer": "Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé."
+      }
+    }
+  ],
+  "builds": {
+    "develop": {
+      "exit_code": 0,
+      "log": "reports/cp2_build_develop.log"
+    },
+    "advanced": {
+      "exit_code": 0,
+      "log": "reports/cp2_build_advanced.log"
+    }
+  },
+  "initial_compose_attempt": {
+    "exit_code": 1,
+    "host_port": 80,
+    "error": "ports are not available: exposing port TCP 0.0.0.0:80 -> 127.0.0.1:0: listen tcp 0.0.0.0:80: bind: An attempt was made to access a socket in a way forbidden by its access permissions.",
+    "resolution": "docker-compose.cp2.yml overrides published ports to 127.0.0.1:18080:80"
+  },
+  "compose_project": "k5-day14-docker",
+  "docker_version": {
+    "Client": {
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "DefaultAPIVersion": "1.56",
+      "GitCommit": "5457199",
+      "GoVersion": "go1.26.10",
+      "Os": "windows",
+      "Arch": "amd64",
+      "BuildTime": "Tue Nov  3 21:46:10 2026",
+      "Context": "desktop-linux"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Desktop 4.99.0 (245822)"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.9.3",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Tue Nov  3 21:41:42 2026",
+            "Experimental": "false",
+            "GitCommit": "70efc0e",
+            "GoVersion": "go1.26.10",
+            "KernelVersion": "6.18.58.1-microsoft-standard-WSL2",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.4.2",
+          "Details": {
+            "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.2",
+          "Details": {
+            "GitCommit": "v1.5.2-0-g29dd3dc2"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "70efc0e",
+      "GoVersion": "go1.26.10",
+      "KernelVersion": "6.18.58.1-microsoft-standard-WSL2",
+      "BuildTime": "2026-11-03T21:41:42.000000000+00:00"
+    }
+  },
+  "docker_compose_version": "Docker Compose version v5.7.0",
+  "images": [
+    {
+      "tags": [
+        "my-agent:develop"
+      ],
+      "id": "sha256:8ae7d01834e281cc27d8bc7551c529752a25b79565868a3720e7791e3579d0a4",
+      "size_bytes": 1667783905,
+      "size_mb_decimal": 1667.783905,
+      "os": "linux",
+      "architecture": "amd64",
+      "user": null,
+      "cmd": [
+        "python",
+        "app.py"
+      ],
+      "healthcheck": null
+    },
+    {
+      "tags": [
+        "k5-day14-docker-agent:latest",
+        "my-agent:advanced"
+      ],
+      "id": "sha256:3babad1e3db107737193d4e36ebdd966d00c4b1566505173e788ad20520bff47",
+      "size_bytes": 239815442,
+      "size_mb_decimal": 239.815442,
+      "os": "linux",
+      "architecture": "amd64",
+      "user": "appuser",
+      "cmd": [
+        "uvicorn",
+        "main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+        "--workers",
+        "2"
+      ],
+      "healthcheck": {
+        "Test": [
+          "CMD-SHELL",
+          "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\" || exit 1"
+        ],
+        "Interval": 30000000000,
+        "Timeout": 10000000000,
+        "StartPeriod": 5000000000,
+        "Retries": 3
+      }
+    }
+  ],
+  "docker_images": [
+    {
+      "Containers": "2",
+      "CreatedAt": "2026-11-25 15:12:42 +0700 +07",
+      "CreatedSince": "5 minutes ago",
+      "Digest": "<none>",
+      "ID": "3babad1e3db1",
+      "Repository": "my-agent",
+      "SharedSize": "N/A",
+      "Size": "240MB",
+      "Tag": "advanced",
+      "UniqueSize": "N/A"
+    },
+    {
+      "Containers": "1",
+      "CreatedAt": "2026-11-25 15:12:38 +0700 +07",
+      "CreatedSince": "5 minutes ago",
+      "Digest": "<none>",
+      "ID": "8ae7d01834e2",
+      "Repository": "my-agent",
+      "SharedSize": "N/A",
+      "Size": "1.67GB",
+      "Tag": "develop",
+      "UniqueSize": "N/A"
+    }
+  ],
+  "reduction_percent": 85.62071253469735,
+  "compose_ps": [
+    {
+      "Command": "\"uvicorn main:app --…\"",
+      "CreatedAt": "2026-11-25 15:14:25 +0700 +07",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "8fb3c6bb960c",
+      "Image": "k5-day14-docker-agent",
+      "Labels": "com.docker.compose.config-hash=d8a8836bbe819194d0f2db74af364ebcbd729879491dc38fdc4cf6e2af4f82d9,com.docker.compose.depends_on=qdrant:service_healthy:false,redis:service_healthy:false,com.docker.compose.image=sha256:2b30d677471aff4967d322809efb3ba03929db7dae5565364400b0a8cd10c524,com.docker.compose.oneoff=False,com.docker.compose.version=5.7.0,com.docker.compose.container-number=1,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.config_files=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\docker-compose.yml,com.docker.compose.project.working_dir=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production,com.docker.compose.service=agent,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Name": "k5-day14-docker-agent-1",
+      "Names": "k5-day14-docker-agent-1",
+      "Networks": "k5-day14-docker_internal",
+      "Ports": "8000/tcp",
+      "Project": "k5-day14-docker",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 8000,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "4 minutes ago",
+      "Service": "agent",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 3 minutes (healthy)"
+    },
+    {
+      "Command": "\"/docker-entrypoint.…\"",
+      "CreatedAt": "2026-11-25 15:15:16 +0700 +07",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "",
+      "ID": "a4cef59385eb",
+      "Image": "nginx:alpine",
+      "Labels": "com.docker.compose.config-hash=b77dc62206a6b18038cb8325bd36c50314da9b8a53a0e6cc9e9353b1fd293c06,com.docker.compose.project=k5-day14-docker,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/SourceKind=hostFile,com.docker.compose.container-number=1,com.docker.compose.depends_on=agent:service_started:false,com.docker.compose.image=sha256:54845972134f849c623fe5cfbedee7e1d35a5708c84a4f36bf9471a9b7aa673d,com.docker.compose.project.working_dir=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production,com.docker.compose.replace=nginx-1,desktop.docker.io/ports.scheme=v2,desktop.docker.io/binds/0/Source=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\nginx\\nginx.conf,desktop.docker.io/binds/0/Target=/etc/nginx/nginx.conf,desktop.docker.io/ports/80/tcp=127.0.0.1:18080,maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\docker-compose.yml,C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\docker-compose.cp2.yml,com.docker.compose.service=nginx",
+      "LocalVolumes": "0",
+      "Mounts": "/run/desktop/m…",
+      "Name": "k5-day14-docker-nginx-1",
+      "Names": "k5-day14-docker-nginx-1",
+      "Networks": "k5-day14-docker_internal",
+      "Ports": "127.0.0.1:18080->80/tcp",
+      "Project": "k5-day14-docker",
+      "Publishers": [
+        {
+          "URL": "127.0.0.1",
+          "TargetPort": 80,
+          "PublishedPort": 18080,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "3 minutes ago",
+      "Service": "nginx",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 3 minutes"
+    },
+    {
+      "Command": "\"./entrypoint.sh\"",
+      "CreatedAt": "2026-11-25 15:14:22 +0700 +07",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "caa873bd8db7",
+      "Image": "qdrant/qdrant:v1.9.0",
+      "Labels": "com.docker.compose.depends_on=,com.docker.compose.image=sha256:463ecb43c9f946b0a4ae99b602d8abbda53c88003461ab5639aa50b63cef8769,com.docker.compose.service=qdrant,com.docker.compose.version=5.7.0,org.opencontainers.image.documentation=https://qdrant.com/docs,com.docker.compose.container-number=1,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.working_dir=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/binds/0/Target=/qdrant/storage,desktop.docker.io/ports.scheme=v2,org.opencontainers.image.source=https://github.com/qdrant/qdrant,com.docker.compose.config-hash=4c5dffc3c733d73298a117b5290f4110ec8c7c94de0ef1aca2ff29bda1de3ee1,com.docker.compose.project.config_files=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\docker-compose.yml,desktop.docker.io/binds/0/Source=k5-day14-docker_qdrant_data,org.opencontainers.image.description=Official Qdrant image,org.opencontainers.image.title=Qdrant,org.opencontainers.image.url=https://qdrant.com/,org.opencontainers.image.vendor=Qdrant,org.opencontainers.image.version=v1.9.0",
+      "LocalVolumes": "1",
+      "Mounts": "k5-day14-docke…",
+      "Name": "k5-day14-docker-qdrant-1",
+      "Names": "k5-day14-docker-qdrant-1",
+      "Networks": "k5-day14-docker_internal",
+      "Ports": "6333-6334/tcp",
+      "Project": "k5-day14-docker",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 6333,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        },
+        {
+          "URL": "",
+          "TargetPort": 6334,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "4 minutes ago",
+      "Service": "qdrant",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 4 minutes (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s…\"",
+      "CreatedAt": "2026-11-25 15:14:22 +0700 +07",
+      "Engine": "",
+      "ExitCode": 0,
+      "Health": "healthy",
+      "ID": "c1bb77f14fad",
+      "Image": "redis:7-alpine",
+      "Labels": "com.docker.compose.container-number=1,com.docker.compose.image=sha256:e4ee3e03ce8f75471f40937a7c6b2b0e500390b6812fcdf5cb32c01295ded446,com.docker.compose.oneoff=False,com.docker.compose.project=k5-day14-docker,com.docker.compose.project.config_files=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production\\docker-compose.yml,com.docker.compose.service=redis,desktop.docker.io/binds/0/Target=/data,com.docker.compose.config-hash=1e79f700c96ff71fa8a43926ba9c395509cff351d1ae18a69d46eca80df803c2,com.docker.compose.depends_on=,com.docker.compose.project.working_dir=C:\\AI20k\\Documents\\Projects\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\02-docker\\production,com.docker.compose.version=5.7.0,desktop.docker.io/binds/0/Source=k5-day14-docker_redis_data,desktop.docker.io/binds/0/SourceKind=hostFile,desktop.docker.io/ports.scheme=v2",
+      "LocalVolumes": "1",
+      "Mounts": "k5-day14-docke…",
+      "Name": "k5-day14-docker-redis-1",
+      "Names": "k5-day14-docker-redis-1",
+      "Networks": "k5-day14-docker_internal",
+      "Ports": "6379/tcp",
+      "Project": "k5-day14-docker",
+      "Publishers": [
+        {
+          "URL": "",
+          "TargetPort": 6379,
+          "PublishedPort": 0,
+          "Protocol": "tcp"
+        }
+      ],
+      "RunningFor": "4 minutes ago",
+      "Service": "redis",
+      "Size": "0B",
+      "State": "running",
+      "Status": "Up 4 minutes (healthy)"
+    }
+  ],
+  "redis_ping": "PONG",
+  "advanced_runtime": {
+    "uid": 999,
+    "os_name": "posix",
+    "python": "3.11.18",
+    "fastapi": "0.115.0",
+    "uvicorn": "0.30.0"
+  },
+  "develop_python_version": "Python 3.11.18",
+  "agent_to_redis": "+PONG",
+  "agent_to_qdrant": {
+    "title": "qdrant - vector search engine",
+    "version": "1.9.0",
+    "commit": "b99d507496a40b0895fff76eb2fa7a5cfdb701a9"
+  },
+  "compose_effective": {
+    "nginx_ports": [
+      {
+        "mode": "ingress",
+        "host_ip": "127.0.0.1",
+        "target": 80,
+        "published": "18080",
+        "protocol": "tcp"
+      }
+    ],
+    "agent_depends_on": {
+      "qdrant": {
+        "condition": "service_healthy",
+        "required": true
+      },
+      "redis": {
+        "condition": "service_healthy",
+        "required": true
+      }
+    },
+    "agent_environment": {
+      "ENVIRONMENT": "staging",
+      "PORT": "8000",
+      "QDRANT_URL": "http://qdrant:6333",
+      "REDIS_URL": "redis://redis:6379/0"
+    },
+    "service_names": [
+      "agent",
+      "nginx",
+      "qdrant",
+      "redis"
+    ]
+  },
+  "status": "PASS",
+  "cleanup": {
+    "finished_at": "2026-11-25T15:19:25.798031+07:00",
+    "commands": [
+      {
+        "command": [
+          "docker",
+          "stop",
+          "k5-day14-cp2-develop",
+          "k5-day14-cp2-advanced"
+        ],
+        "exit_code": 0,
+        "stdout": "k5-day14-cp2-develop\nk5-day14-cp2-advanced",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "docker",
+          "rm",
+          "k5-day14-cp2-develop",
+          "k5-day14-cp2-advanced"
+        ],
+        "exit_code": 0,
+        "stdout": "k5-day14-cp2-develop\nk5-day14-cp2-advanced",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "docker",
+          "compose",
+          "-p",
+          "k5-day14-docker",
+          "-f",
+          "02-docker/production/docker-compose.yml",
+          "-f",
+          "02-docker/production/docker-compose.cp2.yml",
+          "down",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "time=\"2026-11-25T15:19:22+07:00\" level=warning msg=\"C:\\\\AI20k\\\\Documents\\\\Projects\\\\K5-L3A-DAY14-TranQuocDong-2A202603643-Deployment-Benchmark-Observability\\\\02-docker\\\\production\\\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion\"\n Container k5-day14-docker-nginx-1 Stopping \n Container k5-day14-docker-nginx-1 Stopped \n Container k5-day14-docker-nginx-1 Removing \n Container k5-day14-docker-nginx-1 Removed \n Container k5-day14-docker-agent-1 Stopping \n Container k5-day14-docker-agent-1 Stopped \n Container k5-day14-docker-agent-1 Removing \n Container k5-day14-docker-agent-1 Removed \n Container k5-day14-docker-redis-1 Stopping \n Container k5-day14-docker-qdrant-1 Stopping \n Container k5-day14-docker-qdrant-1 Stopped \n Container k5-day14-docker-qdrant-1 Removing \n Container k5-day14-docker-qdrant-1 Removed \n Container k5-day14-docker-redis-1 Stopped \n Container k5-day14-docker-redis-1 Removing \n Container k5-day14-docker-redis-1 Removed \n Volume k5-day14-docker_qdrant_data Removing \n Volume k5-day14-docker_redis_data Removing \n Network k5-day14-docker_internal Removing \n Volume k5-day14-docker_redis_data Removed \n Volume k5-day14-docker_qdrant_data Removed \n Network k5-day14-docker_internal Removed"
+      },
+      {
+        "command": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "label=com.docker.compose.project=k5-day14-docker",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "label=day14.checkpoint=cp2",
+          "--format",
+          "{{.Names}}"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "cp2_containers_removed": true,
+    "compose_volumes_removed": true,
+    "images_retained": true
+  }
+}

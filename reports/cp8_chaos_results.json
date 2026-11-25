@@ -1,0 +1,165 @@
+{
+  "ran_at": "2026-11-25T16:54:02.800618+07:00",
+  "experiments_AB": {
+    "first_seen_s": {
+      "AgentInstanceDown:pending": 11.1,
+      "AgentHighErrorRate:pending": 36.7,
+      "AgentHighLatencyP95:pending": 41.8,
+      "AgentHighErrorRate:firing": 96.9,
+      "AgentHighLatencyP95:firing": 162.1
+    },
+    "final_alerts": {
+      "AgentHighErrorRate": {
+        "state": "firing",
+        "activeAt": "2026-11-25T09:54:37.401817116Z",
+        "value": "1.8384074941451992e-01",
+        "labels": {
+          "alertname": "AgentHighErrorRate",
+          "severity": "critical"
+        }
+      },
+      "AgentHighLatencyP95": {
+        "state": "firing",
+        "activeAt": "2026-11-25T09:54:42.401817116Z",
+        "value": "1.9012135922330096e+00",
+        "labels": {
+          "alertname": "AgentHighLatencyP95",
+          "severity": "warning"
+        }
+      }
+    },
+    "error_rate_metric": [
+      {
+        "metric": {},
+        "value": [
+          1795600604.954,
+          "0.18384074941451992"
+        ]
+      }
+    ],
+    "p95_metric_s": [
+      {
+        "metric": {},
+        "value": [
+          1795600604.97,
+          "1.9012135922330096"
+        ]
+      }
+    ]
+  },
+  "experiment_D": {
+    "paused_container": "k5-day14-observability-agent-1",
+    "first_seen_s": {
+      "AgentHighErrorRate:firing": 11.0,
+      "AgentHighLatencyP95:firing": 11.0,
+      "AgentInstanceDown:pending": 11.0,
+      "AgentInstanceDown:firing": 41.1
+    },
+    "all_alerts_firing": {
+      "AgentHighErrorRate": {
+        "state": "firing",
+        "activeAt": "2026-11-25T09:54:37.401817116Z",
+        "value": "1.8235159702352305e-01",
+        "labels": {
+          "alertname": "AgentHighErrorRate",
+          "severity": "critical"
+        }
+      },
+      "AgentHighLatencyP95": {
+        "state": "firing",
+        "activeAt": "2026-11-25T09:54:42.401817116Z",
+        "value": "1.8956783979031384e+00",
+        "labels": {
+          "alertname": "AgentHighLatencyP95",
+          "severity": "warning"
+        }
+      },
+      "AgentInstanceDown": {
+        "state": "firing",
+        "activeAt": "2026-11-25T09:56:52.401817116Z",
+        "value": "0e+00",
+        "labels": {
+          "alertname": "AgentInstanceDown",
+          "instance": "172.18.0.7:8000",
+          "job": "agent",
+          "severity": "critical"
+        }
+      }
+    },
+    "nginx_probe_statuses": [
+      504,
+      200,
+      503,
+      200,
+      200
+    ],
+    "up_metric": [
+      {
+        "metric": {
+          "__name__": "up",
+          "instance": "172.18.0.7:8000",
+          "job": "agent"
+        },
+        "value": [
+          1795600646.153,
+          "0"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "up",
+          "instance": "172.18.0.8:8000",
+          "job": "agent"
+        },
+        "value": [
+          1795600646.153,
+          "1"
+        ]
+      }
+    ]
+  },
+  "experiment_E": {
+    "alerts_after_95s": {},
+    "agent_info": [
+      {
+        "metric": {
+          "__name__": "agent_info",
+          "instance": "172.18.0.7:8000",
+          "job": "agent",
+          "model": "mock-llm-small",
+          "version": "v1"
+        },
+        "value": [
+          1795600748.005,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "agent_info",
+          "instance": "172.18.0.8:8000",
+          "job": "agent",
+          "model": "mock-llm-small",
+          "version": "v1"
+        },
+        "value": [
+          1795600748.005,
+          "1"
+        ]
+      }
+    ],
+    "v1_sample_answer": {
+      "answer": "Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.",
+      "model": "mock-llm-small",
+      "agent_version": "v1",
+      "usage": {
+        "input_tokens": 39,
+        "output_tokens": 24,
+        "cost_usd": 2.025e-05
+      },
+      "llm_latency_ms": 136.6,
+      "request_id": "e20a0b63bc72",
+      "trace_id": "2b8ae2a647af8cc6da39559df826e7cd"
+    }
+  }
+}

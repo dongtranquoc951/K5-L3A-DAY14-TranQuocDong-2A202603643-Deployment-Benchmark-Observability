@@ -1,0 +1,44 @@
+{
+  "checkpoint": "CP4-develop",
+  "ran_at": "2026-11-25T15:34:06.615873+07:00",
+  "os_name": "posix",
+  "python": "3.14.4",
+  "port": 18025,
+  "health": {
+    "returncode": 0,
+    "status_code": 200,
+    "elapsed_seconds": 0.064,
+    "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:34:01 GMT\nserver: uvicorn\ncontent-length: 185\ncontent-type: application/json\n\n{\"status\":\"ok\",\"uptime_seconds\":4.5,\"version\":\"1.0.0\",\"environment\":\"development\",\"timestamp\":\"2026-11-25T08:34:01.688367+00:00\",\"checks\":{\"memory\":{\"status\":\"ok\",\"used_percent\":16.9}}}",
+    "body": "{\"status\":\"ok\",\"uptime_seconds\":4.5,\"version\":\"1.0.0\",\"environment\":\"development\",\"timestamp\":\"2026-11-25T08:34:01.688367+00:00\",\"checks\":{\"memory\":{\"status\":\"ok\",\"used_percent\":16.9}}}",
+    "stderr": ""
+  },
+  "ready_before_shutdown": {
+    "returncode": 0,
+    "status_code": 200,
+    "elapsed_seconds": 0.08,
+    "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:34:01 GMT\nserver: uvicorn\ncontent-length: 37\ncontent-type: application/json\n\n{\"ready\":true,\"in_flight_requests\":1}",
+    "body": "{\"ready\":true,\"in_flight_requests\":1}",
+    "stderr": ""
+  },
+  "sigterm_sent_at": "2026-11-25T15:34:02.494966+07:00",
+  "in_flight_requests": [
+    {
+      "returncode": 0,
+      "status_code": 200,
+      "elapsed_seconds": 3.297,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:34:01 GMT\nserver: uvicorn\ncontent-length: 126\ncontent-type: application/json\n\n{\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\"}",
+      "body": "{\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\"}",
+      "stderr": ""
+    },
+    {
+      "returncode": 56,
+      "status_code": null,
+      "elapsed_seconds": 3.293,
+      "raw": "",
+      "body": "",
+      "stderr": "curl: (56) Recv failure: Connection reset by peer\n"
+    }
+  ],
+  "exit_code": 0,
+  "server_logs": "2026-11-25 08:33:57,218 INFO Starting agent on port 18025\nINFO:     Started server process [1888]\nINFO:     Waiting for application startup.\n2026-11-25 08:33:58,102 INFO Agent starting up...\n2026-11-25 08:33:58,102 INFO Loading model and checking dependencies...\n2026-11-25 08:33:58,303 INFO ✅ Agent is ready!\nINFO:     Application startup complete.\nINFO:     Uvicorn running on http://0.0.0.0:18025 (Press CTRL+C to quit)\nINFO:     127.0.0.1:35490 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:35494 - \"GET /health HTTP/1.1\" 200 OK\nINFO:     127.0.0.1:35504 - \"GET /ready HTTP/1.1\" 200 OK\nINFO:     Shutting down\nINFO:     127.0.0.1:35508 - \"POST /ask?question=hello HTTP/1.1\" 200 OK\nINFO:     Waiting for application shutdown.\n2026-11-25 08:34:05,375 INFO 🔄 Graceful shutdown initiated...\n2026-11-25 08:34:05,375 INFO ✅ Shutdown complete\nINFO:     Application shutdown complete.\nINFO:     Finished server process [1888]\n2026-11-25 08:34:05,379 INFO Received signal 15 — uvicorn will handle graceful shutdown\n"
+}

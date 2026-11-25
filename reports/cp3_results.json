@@ -1,0 +1,257 @@
+{
+  "checkpoint": "CP3",
+  "ran_at": "2026-11-25T15:30:22.050319+07:00",
+  "environment": {
+    "os_name": "posix",
+    "python": "3.14.4"
+  },
+  "exercise_4_1_develop": {
+    "port": 18021,
+    "health": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 15\ncontent-type: application/json\n\n{\"status\":\"ok\"}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 15\ncontent-type: application/json",
+      "body": "{\"status\":\"ok\"}",
+      "stderr": ""
+    },
+    "ask_missing_key": {
+      "returncode": 0,
+      "status_code": 401,
+      "raw": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 67\ncontent-type: application/json\n\n{\"detail\":\"Missing API key. Include header: X-API-Key: <your-key>\"}",
+      "headers": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 67\ncontent-type: application/json",
+      "body": "{\"detail\":\"Missing API key. Include header: X-API-Key: <your-key>\"}",
+      "stderr": ""
+    },
+    "ask_wrong_key": {
+      "returncode": 0,
+      "status_code": 403,
+      "raw": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 29\ncontent-type: application/json\n\n{\"detail\":\"Invalid API key.\"}",
+      "headers": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 29\ncontent-type: application/json",
+      "body": "{\"detail\":\"Invalid API key.\"}",
+      "stderr": ""
+    },
+    "ask_valid_key": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 122\ncontent-type: application/json\n\n{\"question\":\"Hello\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\"}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:26 GMT\nserver: uvicorn\ncontent-length: 122\ncontent-type: application/json",
+      "body": "{\"question\":\"Hello\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\"}",
+      "stderr": ""
+    },
+    "server_exit_code": -15
+  },
+  "exercise_4_2_to_4_4_production": {
+    "port": 18022,
+    "health": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 124\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"status\":\"ok\",\"uptime_seconds\":0.4,\"security\":\"JWT + RateLimit + CostGuard\",\"timestamp\":\"2026-11-25T08:30:33.305010+00:00\"}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 124\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"status\":\"ok\",\"uptime_seconds\":0.4,\"security\":\"JWT + RateLimit + CostGuard\",\"timestamp\":\"2026-11-25T08:30:33.305010+00:00\"}",
+      "stderr": ""
+    },
+    "ask_no_token": {
+      "returncode": 0,
+      "status_code": 401,
+      "raw": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\nwww-authenticate: Bearer\ncontent-length: 76\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":\"Authentication required. Include: Authorization: Bearer <token>\"}",
+      "headers": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\nwww-authenticate: Bearer\ncontent-length: 76\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"detail\":\"Authentication required. Include: Authorization: Bearer <token>\"}",
+      "stderr": ""
+    },
+    "ask_invalid_token": {
+      "returncode": 0,
+      "status_code": 403,
+      "raw": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 27\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":\"Invalid token.\"}",
+      "headers": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 27\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"detail\":\"Invalid token.\"}",
+      "stderr": ""
+    },
+    "token_wrong_creds": {
+      "returncode": 0,
+      "status_code": 401,
+      "raw": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 32\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":\"Invalid credentials\"}",
+      "headers": "HTTP/1.1 401 Unauthorized\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 32\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"detail\":\"Invalid credentials\"}",
+      "stderr": ""
+    },
+    "token_student": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 307\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"access_token\":\"eyJhbGciOiJIUzI1...<REDACTED>...3APXCE48\",\"token_type\":\"bearer\",\"expires_in_minutes\":60,\"hint\":\"Include in header: Authorization: Bearer eyJhbGciOiJIUzI1NiIs...\"}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 307\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"access_token\":\"eyJhbGciOiJIUzI1...<REDACTED>...3APXCE48\",\"token_type\":\"bearer\",\"expires_in_minutes\":60,\"hint\":\"Include in header: Authorization: Bearer eyJhbGciOiJIUzI1NiIs...\"}",
+      "stderr": ""
+    },
+    "rate_limit_loop": [
+      {
+        "attempt": 1,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 192\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Explain JWT\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":9,\"budget_remaining_usd\":1.9e-05}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 192\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Explain JWT\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":9,\"budget_remaining_usd\":1.9e-05}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 2,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 208\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 2\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":8,\"budget_remaining_usd\":4e-05}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 208\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 2\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":8,\"budget_remaining_usd\":4e-05}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 3,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 179\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 3\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":7,\"budget_remaining_usd\":5.6e-05}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 179\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 3\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":7,\"budget_remaining_usd\":5.6e-05}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 4,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 187\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 4\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":6,\"budget_remaining_usd\":7.4e-05}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 187\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 4\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":6,\"budget_remaining_usd\":7.4e-05}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 5,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 179\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 5\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":5,\"budget_remaining_usd\":9.1e-05}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 179\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 5\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":5,\"budget_remaining_usd\":9.1e-05}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 6,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 211\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 6\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":4,\"budget_remaining_usd\":0.000112}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 211\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 6\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":4,\"budget_remaining_usd\":0.000112}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 7,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 187\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 7\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":3,\"budget_remaining_usd\":0.00013}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 187\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 7\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":3,\"budget_remaining_usd\":0.00013}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 8,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 188\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 8\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":2,\"budget_remaining_usd\":0.000149}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:32 GMT\nserver: uvicorn\ncontent-length: 188\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 8\",\"answer\":\"Tôi là AI agent được deploy lên cloud. Câu hỏi của bạn đã được nhận.\",\"usage\":{\"requests_remaining\":2,\"budget_remaining_usd\":0.000149}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 9,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 180\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 9\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":1,\"budget_remaining_usd\":0.000165}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 180\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 9\",\"answer\":\"Agent đang hoạt động tốt! (mock response) Hỏi thêm câu hỏi đi nhé.\",\"usage\":{\"requests_remaining\":1,\"budget_remaining_usd\":0.000165}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 10,
+        "returncode": 0,
+        "status_code": 200,
+        "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 212\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"question\":\"Test 10\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":0,\"budget_remaining_usd\":0.000186}}",
+        "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 212\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"question\":\"Test 10\",\"answer\":\"Đây là câu trả lời từ AI agent (mock). Trong production, đây sẽ là response từ OpenAI/Anthropic.\",\"usage\":{\"requests_remaining\":0,\"budget_remaining_usd\":0.000186}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 11,
+        "returncode": 0,
+        "status_code": 429,
+        "raw": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "headers": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 12,
+        "returncode": 0,
+        "status_code": 429,
+        "raw": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "headers": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 13,
+        "returncode": 0,
+        "status_code": 429,
+        "raw": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "headers": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 14,
+        "returncode": 0,
+        "status_code": 429,
+        "raw": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "headers": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "stderr": ""
+      },
+      {
+        "attempt": 15,
+        "returncode": 0,
+        "status_code": 429,
+        "raw": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "headers": "HTTP/1.1 429 Too Many Requests\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\nx-ratelimit-limit: 10\nx-ratelimit-remaining: 0\nx-ratelimit-reset: 1795595494\nretry-after: 59\ncontent-length: 98\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+        "body": "{\"detail\":{\"error\":\"Rate limit exceeded\",\"limit\":10,\"window_seconds\":60,\"retry_after_seconds\":59}}",
+        "stderr": ""
+      }
+    ],
+    "me_usage": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 184\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"user_id\":\"student\",\"date\":\"2026-11-25\",\"requests\":10,\"input_tokens\":40,\"output_tokens\":300,\"cost_usd\":0.000186,\"budget_usd\":1.0,\"budget_remaining_usd\":0.999814,\"budget_used_pct\":0.0}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 184\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"user_id\":\"student\",\"date\":\"2026-11-25\",\"requests\":10,\"input_tokens\":40,\"output_tokens\":300,\"cost_usd\":0.000186,\"budget_usd\":1.0,\"budget_remaining_usd\":0.999814,\"budget_used_pct\":0.0}",
+      "stderr": ""
+    },
+    "admin_stats_as_student": {
+      "returncode": 0,
+      "status_code": 403,
+      "raw": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 23\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"detail\":\"Admin only\"}",
+      "headers": "HTTP/1.1 403 Forbidden\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 23\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"detail\":\"Admin only\"}",
+      "stderr": ""
+    },
+    "token_teacher": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 308\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"access_token\":\"eyJhbGciOiJIUzI1...<REDACTED>...bTlsV-g8\",\"token_type\":\"bearer\",\"expires_in_minutes\":60,\"hint\":\"Include in header: Authorization: Bearer eyJhbGciOiJIUzI1NiIs...\"}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 308\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"access_token\":\"eyJhbGciOiJIUzI1...<REDACTED>...bTlsV-g8\",\"token_type\":\"bearer\",\"expires_in_minutes\":60,\"hint\":\"Include in header: Authorization: Bearer eyJhbGciOiJIUzI1NiIs...\"}",
+      "stderr": ""
+    },
+    "admin_stats_as_teacher": {
+      "returncode": 0,
+      "status_code": 200,
+      "raw": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 104\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin\n\n{\"total_users\":\"N/A (in-memory demo)\",\"global_cost_usd\":0.00018599999999999997,\"global_budget_usd\":10.0}",
+      "headers": "HTTP/1.1 200 OK\ndate: Wed, 25 Nov 2026 08:30:34 GMT\nserver: uvicorn\ncontent-length: 104\ncontent-type: application/json\nx-content-type-options: nosniff\nx-frame-options: DENY\nx-xss-protection: 1; mode=block\nreferrer-policy: strict-origin-when-cross-origin",
+      "body": "{\"total_users\":\"N/A (in-memory demo)\",\"global_cost_usd\":0.00018599999999999997,\"global_budget_usd\":10.0}",
+      "stderr": ""
+    },
+    "server_exit_code": -15
+  }
+}
